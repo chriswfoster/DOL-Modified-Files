@@ -14,115 +14,11 @@ namespace DOL.GS.Spells
     //http://www.camelotherald.com/masterlevels/ma.php?ml=Sojourner
     //no shared timer
     #region Sojourner-1
-    [SpellHandlerAttribute("SummonedAlbTeleporter")]
-    public class SummonedAlbTeleporterSpellHandler : SpellHandler
-    {
-        private SimpleTeleporter teleporter;
-        /// <summary>
-        /// Execute Summon Teleporter summon spell
-        /// </summary>
-        /// <param name="target"></param>
-        public override void FinishSpellCast(GameLiving target)
-        {
-            m_caster.Mana -= PowerCost(target);
-            base.FinishSpellCast(target);
-        }
-        public override void OnEffectStart(GameSpellEffect effect)
-        {
-            base.OnEffectStart(effect);
-            if (effect.Owner == null || !effect.Owner.IsAlive)
-                return;
-
-            teleporter.AddToWorld();
-        }
-        public override int OnEffectExpires(GameSpellEffect effect, bool noMessages)
-        {
-            if (teleporter != null) teleporter.Delete();
-            return base.OnEffectExpires(effect, noMessages);
-        }
-        public SummonedAlbTeleporterSpellHandler(GameLiving caster, Spell spell, SpellLine line)
-            : base(caster, spell, line)
-        {
-            if (caster is GamePlayer)
-            {
-                GamePlayer casterPlayer = caster as GamePlayer;
-                teleporter = new SimpleTeleporter();
-                //Fill the object variables
-                teleporter.X = casterPlayer.X + Util.Random(20, 40) - Util.Random(20, 40);
-                teleporter.Y = casterPlayer.Y + Util.Random(20, 40) - Util.Random(20, 40);
-                teleporter.Z = casterPlayer.Z;
-                teleporter.CurrentRegion = casterPlayer.CurrentRegion;
-                teleporter.Heading = (ushort)((casterPlayer.Heading + 2048) % 4096);
-                teleporter.Level = 1;
-                teleporter.Realm = casterPlayer.Realm;
-                teleporter.Name = "Travelling Teleporter";
-                teleporter.Model = 947;
-                teleporter.CurrentSpeed = 0;
-                teleporter.MaxSpeedBase = 0;
-                teleporter.GuildName = "Albion Main";
-                teleporter.Size = 50;
-                teleporter.Flags |= GameNPC.eFlags.PEACE;
-
-            }
-        }
-    }
+    //Gameplayer - MaxEncumbrance
     #endregion
 
     //ML2 Unending Breath - already handled in another area
-    #region Sojourner-2
-    [SpellHandlerAttribute("SummonedHibTeleporter")]
-    public class SummonedHibTeleporterSpellHandler : SpellHandler
-    {
-        private SimpleTeleporter teleporter;
-        /// <summary>
-        /// Execute Summon Teleporter summon spell
-        /// </summary>
-        /// <param name="target"></param>
-        public override void FinishSpellCast(GameLiving target)
-        {
-            m_caster.Mana -= PowerCost(target);
-            base.FinishSpellCast(target);
-        }
-        public override void OnEffectStart(GameSpellEffect effect)
-        {
-            base.OnEffectStart(effect);
-            if (effect.Owner == null || !effect.Owner.IsAlive)
-                return;
 
-            teleporter.AddToWorld();
-        }
-        public override int OnEffectExpires(GameSpellEffect effect, bool noMessages)
-        {
-            if (teleporter != null) teleporter.Delete();
-            return base.OnEffectExpires(effect, noMessages);
-        }
-        public SummonedHibTeleporterSpellHandler(GameLiving caster, Spell spell, SpellLine line)
-            : base(caster, spell, line)
-        {
-            if (caster is GamePlayer)
-            {
-                GamePlayer casterPlayer = caster as GamePlayer;
-                teleporter = new SimpleTeleporter();
-                //Fill the object variables
-                teleporter.X = casterPlayer.X + Util.Random(20, 40) - Util.Random(20, 40);
-                teleporter.Y = casterPlayer.Y + Util.Random(20, 40) - Util.Random(20, 40);
-                teleporter.Z = casterPlayer.Z;
-                teleporter.CurrentRegion = casterPlayer.CurrentRegion;
-                teleporter.Heading = (ushort)((casterPlayer.Heading + 2048) % 4096);
-                teleporter.Level = 1;
-                teleporter.Realm = casterPlayer.Realm;
-                teleporter.Name = "Travelling Teleporter";
-                teleporter.Model = 947;
-                teleporter.CurrentSpeed = 0;
-                teleporter.MaxSpeedBase = 0;
-                teleporter.GuildName = "Hibernia Main";
-                teleporter.Size = 50;
-                teleporter.Flags |= GameNPC.eFlags.PEACE;
-
-            }
-        }
-    }
-    #endregion
     //ML3 Reveal Crystalseed - already handled in another area
 
     //no shared timer
@@ -222,7 +118,7 @@ namespace DOL.GS.Spells
 
     //no shared timer
     #region Sojourner-6
-    [SpellHandlerAttribute("SummonedMidTeleporter")]
+    [SpellHandlerAttribute("SummonedMainTeleporter")]
     public class SummonedMidTeleporterSpellHandler : SpellHandler
     {
         private SimpleTeleporter teleporter;
@@ -267,7 +163,7 @@ namespace DOL.GS.Spells
                 teleporter.Model = 947;
                 teleporter.CurrentSpeed = 0;
                 teleporter.MaxSpeedBase = 0;
-                teleporter.GuildName = "Midgard Main";
+                teleporter.GuildName = "Main Zones";
                 teleporter.Size = 50;
                 teleporter.Flags |= GameNPC.eFlags.PEACE;
 

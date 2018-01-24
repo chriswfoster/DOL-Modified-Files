@@ -73,20 +73,56 @@ namespace DOL.GS
                 if (item.Item_Type == 888 && isItemInMerchantList(item))
                 {
 
-                    var spectogive = item.Name;
-                   if (spectogive.ToLower() == "darkness")
+                    var spectogive = player.Client.Account.Characters[player.Client.ActiveCharIndex].SerializedSpecs + item.Name;
+                    //////////////////////////////////// I NEED TO FIX THIS RIGHT/////////////////////
+                    switch (item.Name)
                     {
-                        player.AddSpecialization(SkillBase.GetSpecialization(Specs.Darkness));
-                        player.AddSpellLine(SkillBase.GetSpellLine("Darkness"));
-                        player.AddSpecialization(SkillBase.GetSpecialization(Specs.Augmentation));
-                        player.AddSpellLine(SkillBase.GetSpellLine("Augmentation Spec"));
-                        player.AddSpellLine(SkillBase.GetSpellLine("AugmentationSpec"));
+                        case "Darkness":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Darkness));
+                            break;
+                        case "Shields":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Shields));
+                            break;
+                        case "Augmentation":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Augmentation));
+                            break;
+                        case "Creeping Path":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Creeping_Path));
+                            break;
+                        case "Battlesongs":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Battlesongs));
+                            break;
+                        case "Mind Magic":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Mind_Magic));
+                            break;
+                        case "Two Handed":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Two_Handed));
+                            break;
+                        case "Bone Army":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.BoneArmy));
+                            break;
+                        case "Summoning":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Summoning));
+                            break;
+                        case "Dual Wield":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Dual_Wield));
+                            break;
+                        case "Odin's Will":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.OdinsWill));
+                            break;
+                    }
+
+                          
+                  
+                   
                         player.Out.SendUpdatePlayer();
                         player.Out.SendUpdatePoints();
                         player.Out.SendUpdatePlayerSkills();
                         player.SaveIntoDatabase();
                         player.UpdatePlayerStatus();
-                    }
+                    player.Inventory.RemoveCountFromStack(item, 1);
+
+                    ////////////////////////////// THIS IS SO UGLY AND HUGE//////////////////////
                 }
                 return false;
             }
@@ -113,8 +149,10 @@ namespace DOL.GS
             }
             else
             {
+      
                 SayTo(player, "Hello traveler, purchase an ability scroll, and hand it to me. I'll try to teach you the ability. I'm learning new things every day - myself.");
-                
+            
+              
             }
             return false;
         }
