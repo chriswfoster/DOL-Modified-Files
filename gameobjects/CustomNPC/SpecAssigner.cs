@@ -80,6 +80,59 @@ namespace DOL.GS
                     player.UpdatePlayerStatus();
                     player.Inventory.RemoveCountFromStack(item, 1);
 
+<<<<<<< HEAD
+=======
+                    var spectogive = player.Client.Account.Characters[player.Client.ActiveCharIndex].SerializedSpecs + item.Name;
+                    //////////////////////////////////// I NEED TO FIX THIS RIGHT/////////////////////
+                    switch (item.Name)
+                    {
+                        case "Darkness":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Darkness));
+                            break;
+                        case "Shields":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Shields));
+                            break;
+                        case "Augmentation":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Augmentation));
+                            break;
+                        case "Creeping Path":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Creeping_Path));
+                            break;
+                        case "Battlesongs":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Battlesongs));
+                            break;
+                        case "Mind Magic":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Mind_Magic));
+                            break;
+                        case "Two Handed":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Two_Handed));
+                            break;
+                        case "Bone Army":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.BoneArmy));
+                            break;
+                        case "Summoning":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Summoning));
+                            break;
+                        case "Dual Wield":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.Dual_Wield));
+                            break;
+                        case "Odin's Will":
+                            player.AddSpecialization(SkillBase.GetSpecialization(Specs.OdinsWill));
+                            break;
+                    }
+
+                          
+                  
+                   
+                        player.Out.SendUpdatePlayer();
+                        player.Out.SendUpdatePoints();
+                        player.Out.SendUpdatePlayerSkills();
+                        player.SaveIntoDatabase();
+                        player.UpdatePlayerStatus();
+                    player.Inventory.RemoveCountFromStack(item, 1);
+
+                    ////////////////////////////// THIS IS SO UGLY AND HUGE//////////////////////
+>>>>>>> e48b99e7c3406bd6b5925cbfbcb7c00df5ccd7d6
                 }
                 return false;
             }
