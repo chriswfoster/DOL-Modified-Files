@@ -190,11 +190,16 @@ namespace DOL.GS
 			get { return m_dbCharacter; }
 		}
 
-		/// <summary>
-		/// Has this player entered the game for the first
-		/// time after logging on (not Zoning!)
-		/// </summary>
-		public bool EnteredGame
+        internal void AddAbility(int studded)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Has this player entered the game for the first
+        /// time after logging on (not Zoning!)
+        /// </summary>
+        public bool EnteredGame
 		{
 			get { return m_enteredGame; }
 			set { m_enteredGame = value; }
@@ -5268,7 +5273,7 @@ namespace DOL.GS
 		/// <param name="mode">various AT related calculations (amount of points, level of AT...)</param>
 		public virtual int GetAutoTrainPoints(Specialization spec, int Mode)
 		{
-			int max_autotrain = Level / 4;
+			int max_autotrain = Level / 1;
 			if (max_autotrain == 0) max_autotrain = 1;
 
 			foreach (string autotrainKey in CharacterClass.GetAutotrainableSkills())
@@ -5293,7 +5298,7 @@ namespace DOL.GS
 							}
 						case 2: // return next free points due to AT change on levelup
 							{
-								if (spec.Level < max_autotrain)
+								if (max_autotrain > 0)
 									return (spec.Level + 1);
 								else
 									return 0;

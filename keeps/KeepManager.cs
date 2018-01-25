@@ -591,15 +591,21 @@ namespace DOL.GS.Keeps
 			{
 				case eGameServerType.GST_Normal:
 					{
-						return keep.Realm != target.Realm;
-					}
+                        return keep.Guild != target.Guild;
+                    }
 				case eGameServerType.GST_PvP:
 					{
 						if (keep.Guild == null)
-							return ServerProperties.Properties.PVP_UNCLAIMED_KEEPS_ENEMY;
+                        {
+                            return true;
+                        }
+                        if (keep.Guild != target.Guild)
+                        {
+                            return true;
+                        }
 
-						//friendly player in group
-						if (checkGroup && target.Group != null)
+                            //friendly player in group
+                            if (checkGroup && target.Group != null)
 						{
 							foreach (GamePlayer player in target.Group.GetPlayersInTheGroup())
 							{

@@ -27,7 +27,7 @@ namespace DOL.GS.PlayerClass
 	[CharacterClassAttribute((int)eCharacterClass.Mage, "Mage", "Mage")]
 	public class ClassMage : CharacterClassBase
 	{
-        private static readonly string[] AutotrainableSkills = new[] { Specs.Slash };
+        private static readonly string[] AutotrainableSkills = new[] { Specs.Slash, Specs.Shields, Specs.Dual_Wield, Specs.Thrust, Specs.Crush, Specs.Two_Handed, Specs.Staff };
         public ClassMage()
 			: base()
 		{
@@ -41,7 +41,14 @@ namespace DOL.GS.PlayerClass
 			m_manaStat = eStat.INT;
 		}
 
-		public override string GetTitle(GamePlayer player, int level)
+
+        public override bool CanUseLefthandedWeapon
+        {
+            get { return true; }
+        }
+
+
+        public override string GetTitle(GamePlayer player, int level)
 		{
 			return HasAdvancedFromBaseClass() ? base.GetTitle(player, level) : base.GetTitle(player, 0);
 		}

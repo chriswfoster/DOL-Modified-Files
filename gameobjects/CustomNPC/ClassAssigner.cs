@@ -98,11 +98,11 @@ namespace DOL.GS
             {
                 player.Out.SendMessage("Great, a fighter, whatever. Off you go!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
                 SetClass(player, 14);
-                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindRegion = 100;
-                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindXpos = 803790;
-                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindYpos = 725935;
-                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindZpos = 4699;
-                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindHeading = 1663;
+                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindRegion = 1;
+                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindXpos = 561654;
+                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindYpos = 510725;
+                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindZpos = 2327;
+                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindHeading = 1009;
                 player.SaveIntoDatabase();
                 player.MoveTo(
                     (ushort)player.BindRegion,
@@ -134,11 +134,11 @@ namespace DOL.GS
             {
                 player.Out.SendMessage("How surprising, another rogue. See ya!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
                 SetClass(player, 17);
-                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindRegion = 200;
-                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindXpos = 347803;
-                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindYpos = 490065;
-                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindZpos = 5189;
-                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindHeading = 798;
+                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindRegion = 1;
+                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindXpos = 561654;
+                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindYpos = 510725;
+                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindZpos = 2327;
+                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindHeading = 1009;
                 player.SaveIntoDatabase();
                 player.MoveTo(
                     (ushort)player.BindRegion,

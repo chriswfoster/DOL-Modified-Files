@@ -275,8 +275,8 @@ namespace DOL.GS.ServerRules
 				if (defender is GameKeepGuard)
 					return false;
 
-				if (defender is GameNPC && (defender as GameNPC).Brain is IControlledBrain == false)
-					return false;
+                if (defender is GameNPC && ((defender as GameNPC).Brain is IControlledBrain == false || defender is GameKeepGuard == false))
+                    return false;
 			}
 
 			//player vs guard

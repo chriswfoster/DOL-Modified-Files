@@ -122,7 +122,7 @@ namespace DOL.GS
                 }
             }
             {
-                player.Out.SendMessage(String.Format("Midgard Destinations:"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format("Hibernia Destinations:"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
             }
             foreach (Teleport destination in m_destinations)
             {

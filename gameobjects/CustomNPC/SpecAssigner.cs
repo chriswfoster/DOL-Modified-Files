@@ -72,21 +72,14 @@ namespace DOL.GS
 
                 if (item.Item_Type == 888 && isItemInMerchantList(item))
                 {
+                    player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
+                    player.Out.SendUpdatePlayer();
+                    player.Out.SendUpdatePoints();
+                    player.Out.SendUpdatePlayerSkills();
+                    player.SaveIntoDatabase();
+                    player.UpdatePlayerStatus();
+                    player.Inventory.RemoveCountFromStack(item, 1);
 
-                    var spectogive = item.Name;
-                   if (spectogive.ToLower() == "darkness")
-                    {
-                        player.AddSpecialization(SkillBase.GetSpecialization(Specs.Darkness));
-                        player.AddSpellLine(SkillBase.GetSpellLine("Darkness"));
-                        player.AddSpecialization(SkillBase.GetSpecialization(Specs.Augmentation));
-                        player.AddSpellLine(SkillBase.GetSpellLine("Augmentation Spec"));
-                        player.AddSpellLine(SkillBase.GetSpellLine("AugmentationSpec"));
-                        player.Out.SendUpdatePlayer();
-                        player.Out.SendUpdatePoints();
-                        player.Out.SendUpdatePlayerSkills();
-                        player.SaveIntoDatabase();
-                        player.UpdatePlayerStatus();
-                    }
                 }
                 return false;
             }
@@ -113,8 +106,10 @@ namespace DOL.GS
             }
             else
             {
+      
                 SayTo(player, "Hello traveler, purchase an ability scroll, and hand it to me. I'll try to teach you the ability. I'm learning new things every day - myself.");
-                
+            
+              
             }
             return false;
         }

@@ -193,12 +193,12 @@ namespace DOL.GS.Keeps
 
 			base.Die(killer);
 
-			if (this.Component != null)
-			{
-				GameServer.ServerRules.ResetKeep(this, killer);
-			}
+            if (this.Component != null)
+            {
+                GameServer.ServerRules.ResetKeep(this, killer);
 
-			m_lastKillTime = CurrentRegion.Time;
+            }
+                m_lastKillTime = CurrentRegion.Time;
 		}
 
 		/// <summary>
