@@ -81,6 +81,18 @@ namespace DOL.GS
                     player.Inventory.RemoveCountFromStack(item, 1);
 
                 }
+                else if (item.Item_Type == 444 && isItemInMerchantList(item))
+                {
+                    player.AddAbility(SkillBase.GetAbility(item.Name));
+                    player.Out.SendUpdatePlayer();
+                    player.Out.SendUpdatePoints();
+                    player.Out.SendUpdatePlayerSkills();
+                    player.SaveIntoDatabase();
+                    player.UpdatePlayerStatus();
+                    player.Inventory.RemoveCountFromStack(item, 1);
+                }
+
+
                 return false;
             }
             return false;
