@@ -3251,7 +3251,7 @@ namespace DOL.GS
 			lock (((ICollection)m_specialization).SyncRoot)
 			{
 				// sort by Level and ID to simulate "addition" order... (try to sort your DB if you want to change this !)
-				list = m_specialization.Select(item => item.Value).OrderBy(it => it.LevelRequired).ThenBy(it => it.ID).ToList();
+				list = m_specialization.Select(item => item.Value).OrderBy(it => it.Name).ThenBy(it => it.ID).ToList();
 			}
 			
 			return list;
@@ -12226,7 +12226,7 @@ namespace DOL.GS
 			// Add Serialized Abilities to keep Database Order
 			// Custom Ability will be disabled as soon as they are not in any specs...
 			tmpStr = character.SerializedAbilities;
-			if (tmpStr != null && tmpStr.Length > 0 && m_usableSkills.Count == 0)
+			//if (tmpStr != null && tmpStr.Length > 0 && m_usableSkills.Count == 0)
 			{
 				foreach (string abilities in tmpStr.SplitCSV())
 				{
