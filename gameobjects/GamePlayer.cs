@@ -3251,7 +3251,7 @@ namespace DOL.GS
 			lock (((ICollection)m_specialization).SyncRoot)
 			{
 				// sort by Level and ID to simulate "addition" order... (try to sort your DB if you want to change this !)
-				list = m_specialization.Select(item => item.Value).OrderBy(it => it.Name).ThenBy(it => it.ID).ToList();
+				list = m_specialization.Select(item => item.Value).OrderBy(it => it.Name).ThenBy(it => it.Name).ToList();
 			}
 			
 			return list;

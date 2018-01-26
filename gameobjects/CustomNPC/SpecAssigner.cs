@@ -84,6 +84,8 @@ namespace DOL.GS
                 else if (item.Item_Type == 444 && isItemInMerchantList(item))
                 {
                     player.AddAbility(SkillBase.GetAbility(item.Name));
+                    player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
+                    player.AddSpellLine(SkillBase.GetSpellLine(item.Name));
                     player.Out.SendUpdatePlayer();
                     player.Out.SendUpdatePoints();
                     player.Out.SendUpdatePlayerSkills();
