@@ -372,6 +372,7 @@
     <Compile Include="gameobjects\CharacterClasses\CharacterClassBase.cs" />
     <Compile Include="gameobjects\CharacterClasses\Midgard\CharacterClassBoneDancer.cs" />
     <Compile Include="gameobjects\CustomNPC\BuffMerchant.cs" />
+    <Compile Include="gameobjects\CustomNPC\AllClassTrainer.cs" />
     <Compile Include="gameobjects\CustomNPC\SpecAssigner.cs" />
     <Compile Include="gameobjects\CustomNPC\ClassAssigner.cs" />
     <Compile Include="gameobjects\GameInventoryObject.cs" />

@@ -161,7 +161,7 @@ namespace DOL.GS
 
 
         /// <summary>
-        /// Player right-clicked the NPC.
+        /// Player right-clicked the teleporter.
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
