@@ -71,17 +71,52 @@ namespace DOL.GS
 
         public override bool Interact(GamePlayer player)
         {
-            string tmpStr = player.Client.Account.Characters[player.Client.ActiveCharIndex].SerializedSpecs;
+            string tmpStr = player.Client.Account.Characters[player.Client.ActiveCharIndex].SerializedSpecs.Replace(@";", ",").Replace(@"|", ",");
 
-            if (!base.Interact(player))
+            string[] values = {};
+            foreach (string spec in tmpStr.SplitCSV())
             {
-                return false;
-            }
-            else
-            {
-                SayTo(player, tmpStr);
-            }
-            return false;
+                values = spec.Split(',');
+            }  
+                if (values.Length >= 2)
+                {
+                    for (var i =0; i < values.Length; i++)
+                    {
+                        Specialization tempSpec = SkillBase.GetSpecialization(values[i]);
+                       
+                        
+                     
+                        i++;
+
+                        if (tempSpec != null)
+                        {
+                            if (tempSpec.AllowSave)
+                            {
+                                int level;
+                                level = 50;
+                                if (player.HasSpecialization(tempSpec.KeyName))
+                                {
+                                    player.GetSpecializationByName(tempSpec.KeyName).Level = level;
+                                   
+                            }
+                                else
+                                {
+                                    tempSpec.Level = level;
+                                    player.AddSpecialization(tempSpec);
+                            }
+
+                            player.Out.SendUpdatePoints();
+                            player.Out.SendUpdatePlayerSkills();
+                            player.SaveIntoDatabase();
+                            player.UpdatePlayerStatus();
+                            SayTo(player, "Updated spec levels.");
+                        }
+                           
+                        }
+                       
+                    }
+                } return false;
+           
         }
     }
 }

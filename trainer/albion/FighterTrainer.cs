@@ -59,15 +59,8 @@ namespace DOL.GS.Trainer
 			// check if class matches
 			if (player.CharacterClass.ID == (int)TrainedClass)
 			{
-				// player can be promoted
-				if (player.Level>=5)
-				{
-					player.Out.SendMessage(this.Name + " says, \"You must now seek your training elsewhere. Which path would you like to follow? [Armsman], [Paladin], or [Mercenary]?\"", eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-				}
-				else
-				{
-					OfferTraining(player);
-				}
+				OfferTraining(player);
+				
 
 				// ask for basic equipment if player doesnt own it
 				if (player.Inventory.GetFirstItemByID(PRACTICE_WEAPON_ID, eInventorySlot.MinEquipable, eInventorySlot.LastBackpack) == null)
