@@ -70,9 +70,60 @@ namespace DOL.GS
             {
                 GamePlayer player = (GamePlayer)source;
 
-                if (item.Item_Type == 888 && isItemInMerchantList(item))
+               if (item.Item_Type == 444 && item.Name == "Plate")
                 {
+                    player.AddAbility(SkillBase.GetAbility("AlbArmor", 5));
                     player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
+                    player.Out.SendUpdatePlayer();
+                    player.Out.SendUpdatePoints();
+                    player.Out.SendUpdatePlayerSkills();
+                    player.SaveIntoDatabase();
+                    player.UpdatePlayerStatus();
+                    player.Inventory.RemoveCountFromStack(item, 1);
+                }
+                else if (item.Item_Type == 444 && item.Name == "Chain")
+                {
+                    player.AddAbility(SkillBase.GetAbility("AlbArmor", 4));
+                    player.AddAbility(SkillBase.GetAbility("HibArmor", 4));
+                    player.AddAbility(SkillBase.GetAbility("MidArmor", 4));
+                    player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
+                    player.Out.SendUpdatePlayer();
+                    player.Out.SendUpdatePoints();
+                    player.Out.SendUpdatePlayerSkills();
+                    player.SaveIntoDatabase();
+                    player.UpdatePlayerStatus();
+                    player.Inventory.RemoveCountFromStack(item, 1);
+                }
+                else if (item.Item_Type == 444 && item.Name == "Studded / Reinforced")
+                {
+                    player.AddAbility(SkillBase.GetAbility("AlbArmor", 3));
+                    player.AddAbility(SkillBase.GetAbility("HibArmor", 3));
+                    player.AddAbility(SkillBase.GetAbility("MidArmor", 3));
+                    player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
+                    player.Out.SendUpdatePlayer();
+                    player.Out.SendUpdatePoints();
+                    player.Out.SendUpdatePlayerSkills();
+                    player.SaveIntoDatabase();
+                    player.UpdatePlayerStatus();
+                    player.Inventory.RemoveCountFromStack(item, 1);
+                }
+                else if (item.Item_Type == 444 && item.Name == "Leather")
+                {
+                    player.AddAbility(SkillBase.GetAbility("AlbArmor", 2));
+                    player.AddAbility(SkillBase.GetAbility("HibArmor", 2));
+                    player.AddAbility(SkillBase.GetAbility("MidArmor", 2));
+                    player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
+                    player.Out.SendUpdatePlayer();
+                    player.Out.SendUpdatePoints();
+                    player.Out.SendUpdatePlayerSkills();
+                    player.SaveIntoDatabase();
+                    player.UpdatePlayerStatus();
+                    player.Inventory.RemoveCountFromStack(item, 1);
+                }
+                else if (item.Item_Type == 666 && isItemInMerchantList(item))
+                {
+                    player.AddAbility(SkillBase.GetAbility(item.Name));
+                    player.AddSpecialization(SkillBase.GetSpecialization(item.Description));
                     player.Out.SendUpdatePlayer();
                     player.Out.SendUpdatePoints();
                     player.Out.SendUpdatePlayerSkills();
@@ -81,18 +132,20 @@ namespace DOL.GS
                     player.Inventory.RemoveCountFromStack(item, 1);
 
                 }
-                else if (item.Item_Type == 444 && isItemInMerchantList(item))
-                {
-                    player.AddAbility(SkillBase.GetAbility(item.Name));
-                    player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
-                    player.AddSpellLine(SkillBase.GetSpellLine(item.Name));
-                    player.Out.SendUpdatePlayer();
-                    player.Out.SendUpdatePoints();
-                    player.Out.SendUpdatePlayerSkills();
-                    player.SaveIntoDatabase();
-                    player.UpdatePlayerStatus();
-                    player.Inventory.RemoveCountFromStack(item, 1);
-                }
+
+
+
+                else if (item.Item_Type == 888 && isItemInMerchantList(item))
+                    {
+                        player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
+                        player.Out.SendUpdatePlayer();
+                        player.Out.SendUpdatePoints();
+                        player.Out.SendUpdatePlayerSkills();
+                        player.SaveIntoDatabase();
+                        player.UpdatePlayerStatus();
+                        player.Inventory.RemoveCountFromStack(item, 1);
+
+                    }
 
 
                 return false;
@@ -108,7 +161,7 @@ namespace DOL.GS
 
 
         /// <summary>
-        /// Player right-clicked the teleporter.
+        /// Player right-clicked the NPC.
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
