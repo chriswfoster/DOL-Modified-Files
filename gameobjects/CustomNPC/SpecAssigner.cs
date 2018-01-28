@@ -73,6 +73,8 @@ namespace DOL.GS
                if (item.Item_Type == 444 && item.Name == "Plate")
                 {
                     player.AddAbility(SkillBase.GetAbility("AlbArmor", 5));
+                    player.AddAbility(SkillBase.GetAbility("HibArmor", 4));
+                    player.AddAbility(SkillBase.GetAbility("MidArmor", 4));
                     player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
                     player.Out.SendUpdatePlayer();
                     player.Out.SendUpdatePoints();

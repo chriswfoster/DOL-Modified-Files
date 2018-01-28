@@ -411,6 +411,7 @@
     <Compile Include="gameutils\Specializations\LiveSpellHybridSpecialization.cs" />
     <Compile Include="gameutils\Specializations\LiveSpellLineSpecialization.cs" />
     <Compile Include="gameutils\Specializations\LiveWeaponSpecialization.cs" />
+    <Compile Include="gameutils\StormUniqueObjectGenerator.cs" />
     <Compile Include="gameutils\Timer\RegionTimerAction.cs" />
     <Compile Include="keeps\IGameKeep.cs" />
     <Compile Include="keeps\IGameKeepComponent.cs" />

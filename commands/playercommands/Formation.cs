@@ -33,12 +33,7 @@ namespace DOL.GS.Commands
 
 			GamePlayer player = client.Player;
 
-			//No one else needs to use this spell
-			if (player.CharacterClass.ID != (int)eCharacterClass.Bonedancer)
-			{
-				client.Out.SendMessage("Only Bonedancers can use this command!", eChatType.CT_System, eChatLoc.CL_SystemWindow);
-				return;
-			}
+			
 
 			//Help display
 			if (args.Length == 1)

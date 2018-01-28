@@ -27,12 +27,12 @@ namespace DOL.GS.PlayerClass
 	[CharacterClassAttribute((int)eCharacterClass.AlbionRogue, "Rogue", "Rogue")]
 	public class ClassAlbionRogue : CharacterClassBase
 	{
-        private static readonly string[] AutotrainableSkills = new[] { Specs.Stealth, Specs.Slash, Specs.Shields, Specs.Dual_Wield, Specs.Thrust, Specs.Crush, Specs.Two_Handed, Specs.Staff, Specs.Critical_Strike };
+        private static readonly string[] AutotrainableSkills = new[] { Specs.Slash, Specs.Shields, Specs.Dual_Wield, Specs.Thrust, Specs.Crush, Specs.Two_Handed, Specs.Staff, Specs.HandToHand, Specs.Left_Axe, Specs.Axe, Specs.Spear, Specs.Stealth, Specs.Sword, Specs.Polearms, Specs.Hammer, Specs.Instruments, Specs.Chants, Specs.Critical_Strike, Specs.Flexible, Specs.Scythe, Specs.Archery, Specs.Parry, Specs.Savagery };
         public ClassAlbionRogue()
 			: base()
 		{
             m_profession = "PlayerClass.Profession.GuildofShadows";
-            m_specializationMultiplier = 20;
+            m_specializationMultiplier = 60;
             m_primaryStat = eStat.DEX;
             m_secondaryStat = eStat.STR;
             m_tertiaryStat = eStat.QUI;
@@ -71,5 +71,9 @@ namespace DOL.GS.PlayerClass
 		{
 			return true;
 		}
-	}
+        public override ushort MaxPulsingSpells
+        {
+            get { return 12; }
+        }
+    }
 }

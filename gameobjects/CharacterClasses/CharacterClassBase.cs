@@ -226,7 +226,7 @@ namespace DOL.GS
 		/// </summary>
 		public virtual ushort MaxPulsingSpells
 		{
-			get { return 1; }
+			get { return 12; }
 		}
 
 		public virtual string GetTitle(GamePlayer player, int level)

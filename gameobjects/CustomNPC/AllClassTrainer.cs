@@ -93,7 +93,7 @@ namespace DOL.GS
                             if (tempSpec.AllowSave)
                             {
                                 int level;
-                                level = 50;
+                                level = player.Level;
                                 if (player.HasSpecialization(tempSpec.KeyName))
                                 {
                                     player.GetSpecializationByName(tempSpec.KeyName).Level = level;
@@ -105,14 +105,14 @@ namespace DOL.GS
                                     player.AddSpecialization(tempSpec);
                             }
 
-                            player.Out.SendUpdatePoints();
-                            player.Out.SendUpdatePlayerSkills();
-                            player.SaveIntoDatabase();
-                            player.UpdatePlayerStatus();
-                            SayTo(player, "Updated spec levels.");
-                        }
                            
                         }
+                        player.Out.SendUpdatePoints();
+                        player.Out.SendUpdatePlayerSkills();
+                        player.SaveIntoDatabase();
+                        player.UpdatePlayerStatus();
+                        SayTo(player, "Updated spec levels.");
+                    }
                        
                     }
                 } return false;
