@@ -225,6 +225,7 @@
     <Compile Include="commands\GMCommands\titlegm.cs" />
     <Compile Include="commands\GMCommands\walk.cs" />
     <Compile Include="commands\GMCommands\weather.cs" />
+    <Compile Include="commands\PlayerCommands\msell.cs" />
     <Compile Include="commands\RefreshCommandAttribute.cs" />
     <Compile Include="commands\PlayerCommands\advice.cs" />
     <Compile Include="commands\PlayerCommands\advisor.cs" />
@@ -371,8 +372,11 @@
     <Compile Include="gameobjects\CharacterClasses\ICharacterClass.cs" />
     <Compile Include="gameobjects\CharacterClasses\CharacterClassBase.cs" />
     <Compile Include="gameobjects\CharacterClasses\Midgard\CharacterClassBoneDancer.cs" />
+    <Compile Include="gameobjects\D2AccountStash.cs" />
     <Compile Include="gameobjects\CustomNPC\BuffMerchant.cs" />
     <Compile Include="gameobjects\CustomNPC\AllClassTrainer.cs" />
+    <Compile Include="gameobjects\CustomNPC\AccountVaultKeeper.cs" />
+    <Compile Include="gameobjects\CustomNPC\SpecRemover.cs" />
     <Compile Include="gameobjects\CustomNPC\InfoMob.cs" />
     <Compile Include="gameobjects\CustomNPC\SpecAssigner.cs" />
     <Compile Include="gameobjects\CustomNPC\ClassAssigner.cs" />

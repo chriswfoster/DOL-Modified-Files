@@ -84,7 +84,7 @@ namespace DOL.GS
 							{
 								mob.Level = 60;
 								mob.Name = "TOA Mob";
-								mob.CurrentRegionID = 30;
+								mob.CurrentRegionID = 1;
 								mob.Z = 9999;
 							}
 							else if (Convert.ToString(args[1]).ToUpper() == "L51")
@@ -164,18 +164,18 @@ namespace DOL.GS
 			ItemUnique item = new ItemUnique();
 
 			// tolakram - drop level 51 items if mob is level 50 or above (confirmed via allakhazam)
-			if (mob.Level > 50)
+			if (mob.Level > 40)
 			{
 				item.Level = 51;
-				item.Quality = Util.Random(97, 99);
+				item.Quality = Util.Random(97, 100);
 			}
 
-			if (mob.Level > 50)
+			if (mob.Level > 40)
 			{
 				// ToA named mobs have good chance to drop unique loot
 				chance += 3;
 				item.Level = 51;
-				item.Quality = Util.Random(97, 99);
+				item.Quality = Util.Random(97, 100);
 			}
 
 			if (killer.Realm != 0 && Util.Chance(chance))
@@ -233,13 +233,13 @@ namespace DOL.GS
 
 			if (item.Level == 0)
 			{
-				if (mob.Level > 50)
+				if (mob.Level > 40)
 					item.Level = 51;
 				else
 				{
 					item.Level = mob.Level;
-					if (item.Level > 49)
-						item.Level = 49;
+					if (item.Level > 40)
+						item.Level = 51;
 					if (item.Level < 1)
 						item.Level = 1;
 				}
@@ -369,7 +369,7 @@ namespace DOL.GS
 			item.IsTradable = false;
 
 			//item quality / maxquality
-			item.Quality = 85;
+			item.Quality = 100;
 
 			//item bonus
 			int temp = item.Level - 15;
@@ -608,14 +608,14 @@ namespace DOL.GS
 							case eRealm.Albion:
 								switch (slot)
 								{
-									case eInventorySlot.ArmsArmor: model = 141; break;
-									case eInventorySlot.LegsArmor: model = 140; break;
-									case eInventorySlot.FeetArmor: model = 143; break;
+									case eInventorySlot.ArmsArmor: model = 3020; break;
+									case eInventorySlot.LegsArmor: model = 3019; break;
+									case eInventorySlot.FeetArmor: model = 3021; break;
 									case eInventorySlot.HeadArmor: model = 822; break;
 									case eInventorySlot.TorsoArmor:
 										if (Util.Chance(60))
 										{
-											model = 139;
+											model = 3017;
 										}
 										else
 										{
@@ -623,27 +623,27 @@ namespace DOL.GS
 
 											switch (Util.Random(2))
 											{
-												case 0: model = 58; break;
-												case 1: model = 65; break;
-												case 2: model = 66; break;
+												case 0: model = 2246; break;
+												case 1: model = 3059; break;
+												case 2: model = 3018; break;
 											}
 										}
 										break;
-									case eInventorySlot.HandsArmor: model = 142; break;
+									case eInventorySlot.HandsArmor: model = 3022; break;
 								}
 								break;
 
 							case eRealm.Midgard:
 								switch (slot)
 								{
-									case eInventorySlot.ArmsArmor: model = 247; break;
-									case eInventorySlot.LegsArmor: model = 246; break;
-									case eInventorySlot.FeetArmor: model = 249; break;
+									case eInventorySlot.ArmsArmor: model = 2161; break;
+									case eInventorySlot.LegsArmor: model = 2167; break;
+									case eInventorySlot.FeetArmor: model = 2166; break;
 									case eInventorySlot.HeadArmor: model = 825; break;
 									case eInventorySlot.TorsoArmor:
 										if (Util.Chance(60))
 										{
-											model = 245;
+											model = 2162;
 										}
 										else
 										{
@@ -651,27 +651,27 @@ namespace DOL.GS
 
 											switch (Util.Random(2))
 											{
-												case 0: model = 58; break;
-												case 1: model = 65; break;
-												case 2: model = 66; break;
+												case 0: model = 2162; break;
+												case 1: model = 798; break;
+												case 2: model = 1008; break;
 											}
 										}
 										break;
-									case eInventorySlot.HandsArmor: model = 248; break;
+									case eInventorySlot.HandsArmor: model = 2249; break;
 								}
 								break;
 
 							case eRealm.Hibernia:
 								switch (slot)
 								{
-									case eInventorySlot.ArmsArmor: model = 380; break;
-									case eInventorySlot.LegsArmor: model = 379; break;
-									case eInventorySlot.FeetArmor: model = 382; break;
+									case eInventorySlot.ArmsArmor: model = 2152; break;
+									case eInventorySlot.LegsArmor: model = 2159; break;
+									case eInventorySlot.FeetArmor: model = 2156; break;
 									case eInventorySlot.HeadArmor: model = 826; break;
 									case eInventorySlot.TorsoArmor:
 										if (Util.Chance(60))
 										{
-											model = 378;
+											model = 2153;
 										}
 										else
 										{
@@ -679,9 +679,9 @@ namespace DOL.GS
 
 											switch (Util.Random(2))
 											{
-												case 0: model = 58; break;
-												case 1: model = 65; break;
-												case 2: model = 66; break;
+												case 0: model = 733; break;
+												case 1: model = 1623; break;
+												case 2: model = 2921; break;
 											}
 										}
 										break;
@@ -705,36 +705,36 @@ namespace DOL.GS
 							case eRealm.Albion:
 								switch (slot)
 								{
-									case eInventorySlot.ArmsArmor: model = 38; break;
-									case eInventorySlot.LegsArmor: model = 37; break;
-									case eInventorySlot.FeetArmor: model = 40; break;
+									case eInventorySlot.ArmsArmor: model = 2143; break;
+									case eInventorySlot.LegsArmor: model = 2150; break;
+									case eInventorySlot.FeetArmor: model = 2147; break;
 									case eInventorySlot.HeadArmor: model = 62; break;
-									case eInventorySlot.TorsoArmor: model = 36; break;
-									case eInventorySlot.HandsArmor: model = 39; break;
+									case eInventorySlot.TorsoArmor: model = 2146; break;
+									case eInventorySlot.HandsArmor: model = 2149; break;
 								}
 								break;
 
 							case eRealm.Midgard:
 								switch (slot)
 								{
-									case eInventorySlot.ArmsArmor: model = 242; break;
-									case eInventorySlot.LegsArmor: model = 241; break;
-									case eInventorySlot.FeetArmor: model = 244; break;
+									case eInventorySlot.ArmsArmor: model = 2175; break;
+									case eInventorySlot.LegsArmor: model = 2182; break;
+									case eInventorySlot.FeetArmor: model = 2179; break;
 									case eInventorySlot.HeadArmor: model = 335; break;
-									case eInventorySlot.TorsoArmor: model = 240; break;
-									case eInventorySlot.HandsArmor: model = 243; break;
+									case eInventorySlot.TorsoArmor: model = 2176; break;
+									case eInventorySlot.HandsArmor: model = 2181; break;
 								}
 								break;
 
 							case eRealm.Hibernia:
 								switch (slot)
 								{
-									case eInventorySlot.ArmsArmor: model = 395; break;
-									case eInventorySlot.LegsArmor: model = 394; break;
-									case eInventorySlot.FeetArmor: model = 397; break;
+									case eInventorySlot.ArmsArmor: model = 2134; break;
+									case eInventorySlot.LegsArmor: model = 2141; break;
+									case eInventorySlot.FeetArmor: model = 2138; break;
 									case eInventorySlot.HeadArmor: model = 438; break;
-									case eInventorySlot.TorsoArmor: model = 393; break;
-									case eInventorySlot.HandsArmor: model = 396; break;
+									case eInventorySlot.TorsoArmor: model = 2137; break;
+									case eInventorySlot.HandsArmor: model = 2140; break;
 								}
 								break;
 
@@ -753,24 +753,24 @@ namespace DOL.GS
 							case eRealm.Albion:
 								switch (slot)
 								{
-									case eInventorySlot.ArmsArmor: model = 83; break;
-									case eInventorySlot.LegsArmor: model = 82; break;
-									case eInventorySlot.FeetArmor: model = 84; break;
+									case eInventorySlot.ArmsArmor: model = 3602; break;
+									case eInventorySlot.LegsArmor: model = 3601; break;
+									case eInventorySlot.FeetArmor: model = 3603; break;
 									case eInventorySlot.HeadArmor: model = 824; break;
-									case eInventorySlot.TorsoArmor: model = 81; break;
-									case eInventorySlot.HandsArmor: model = 85; break;
+									case eInventorySlot.TorsoArmor: model = 3600; break;
+									case eInventorySlot.HandsArmor: model = 3604; break;
 								}
 								break;
 
 							case eRealm.Midgard:
 								switch (slot)
 								{
-									case eInventorySlot.ArmsArmor: model = 232; break;
-									case eInventorySlot.LegsArmor: model = 231; break;
-									case eInventorySlot.FeetArmor: model = 234; break;
+									case eInventorySlot.ArmsArmor: model = 1779; break;
+									case eInventorySlot.LegsArmor: model = 1786; break;
+									case eInventorySlot.FeetArmor: model = 1783; break;
 									case eInventorySlot.HeadArmor: model = 829; break;
-									case eInventorySlot.TorsoArmor: model = 230; break;
-									case eInventorySlot.HandsArmor: model = 233; break;
+									case eInventorySlot.TorsoArmor: model = 1781; break;
+									case eInventorySlot.HandsArmor: model = 1785; break;
 								}
 								break;
 						}
@@ -785,9 +785,9 @@ namespace DOL.GS
 						name = "Plate " + ArmorSlotToName(slot, type);
 						switch (slot)
 						{
-							case eInventorySlot.ArmsArmor: model = 48; break;
-							case eInventorySlot.LegsArmor: model = 47; break;
-							case eInventorySlot.FeetArmor: model = 50; break;
+							case eInventorySlot.ArmsArmor: model = 1808; break;
+							case eInventorySlot.LegsArmor: model = 1795; break;
+							case eInventorySlot.FeetArmor: model = 1793; break;
 							case eInventorySlot.HeadArmor:
 								if (Util.Chance(25))
 								{
@@ -801,10 +801,10 @@ namespace DOL.GS
 
 							case eInventorySlot.TorsoArmor:
 								name = ArmorSlotToName(slot, type); // Breastplate
-								model = 46;
+								model = 1810;
 								break;
 
-							case eInventorySlot.HandsArmor: model = 49; break;
+							case eInventorySlot.HandsArmor: model = 1794; break;
 						}
 
 						if (slot != eInventorySlot.HeadArmor)
@@ -820,24 +820,24 @@ namespace DOL.GS
 							case eRealm.Albion:
 								switch (slot)
 								{
-									case eInventorySlot.ArmsArmor: model = 43; break;
-									case eInventorySlot.LegsArmor: model = 42; break;
-									case eInventorySlot.FeetArmor: model = 45; break;
+									case eInventorySlot.ArmsArmor: model = 3045; break;
+									case eInventorySlot.LegsArmor: model = 3044; break;
+									case eInventorySlot.FeetArmor: model = 3031; break;
 									case eInventorySlot.HeadArmor: model = 63; break;
-									case eInventorySlot.TorsoArmor:	model = 41;	break;
-									case eInventorySlot.HandsArmor: model = 44; break;
+									case eInventorySlot.TorsoArmor:	model = 3043;	break;
+									case eInventorySlot.HandsArmor: model = 3032; break;
 								}
 								break;
 
 							case eRealm.Midgard:
 								switch (slot)
 								{
-									case eInventorySlot.ArmsArmor: model = 237; break;
-									case eInventorySlot.LegsArmor: model = 236; break;
-									case eInventorySlot.FeetArmor: model = 239; break;
+									case eInventorySlot.ArmsArmor: model = 1693; break;
+									case eInventorySlot.LegsArmor: model = 1700; break;
+									case eInventorySlot.FeetArmor: model = 1697; break;
 									case eInventorySlot.HeadArmor: model = 832; break;
-									case eInventorySlot.TorsoArmor:	model = 235; break;
-									case eInventorySlot.HandsArmor: model = 238; break;
+									case eInventorySlot.TorsoArmor:	model = 1694; break;
+									case eInventorySlot.HandsArmor: model = 1699; break;
 								}
 								break;
 						}
@@ -852,12 +852,12 @@ namespace DOL.GS
 						name = "Reinforced " + ArmorSlotToName(slot, type);
 						switch (slot)
 						{
-							case eInventorySlot.ArmsArmor: model = 385; break;
-							case eInventorySlot.LegsArmor: model = 384; break;
-							case eInventorySlot.FeetArmor: model = 387; break;
+							case eInventorySlot.ArmsArmor: model = 817; break;
+							case eInventorySlot.LegsArmor: model = 816; break;
+							case eInventorySlot.FeetArmor: model = 819; break;
 							case eInventorySlot.HeadArmor: model = 835; break;
-							case eInventorySlot.TorsoArmor: model = 383; break;
-							case eInventorySlot.HandsArmor: model = 386; break;
+							case eInventorySlot.TorsoArmor: model = 815; break;
+							case eInventorySlot.HandsArmor: model = 818; break;
 						}
 
 						if (slot != eInventorySlot.HeadArmor)
@@ -870,12 +870,12 @@ namespace DOL.GS
 						name = "Scale " + ArmorSlotToName(slot, type);
 						switch (slot)
 						{
-							case eInventorySlot.ArmsArmor: model = 390; break;
-							case eInventorySlot.LegsArmor: model = 389; break;
-							case eInventorySlot.FeetArmor: model = 392; break;
+							case eInventorySlot.ArmsArmor: model = 1788; break;
+							case eInventorySlot.LegsArmor: model = 1795; break;
+							case eInventorySlot.FeetArmor: model = 1793; break;
 							case eInventorySlot.HeadArmor: model = 838; break;
-							case eInventorySlot.TorsoArmor: model = 388; break;
-							case eInventorySlot.HandsArmor: model = 391; break;
+							case eInventorySlot.TorsoArmor: model = 1790; break;
+							case eInventorySlot.HandsArmor: model = 1794; break;
 						}
 
 						if (slot != eInventorySlot.HeadArmor)
@@ -892,12 +892,12 @@ namespace DOL.GS
 							if (item.SPD_ABS < 51)
 							{
 								name = "Large Axe";
-								model = 577;
+								model = 1014;
 							}
 							else
 							{
 								name = "Great Axe";
-								model = 317;
+								model = 72;
 							}
 						}
 						else // 1 handed axe; speed 28-45; 578 (hand), 316 (Bearded), 319 (War), 315 (Spiked), 573 (Double)
@@ -905,27 +905,27 @@ namespace DOL.GS
 							if (item.SPD_ABS < 25)
 							{
 								name = "Hand Axe";
-								model = 578;
+								model = 1010;
 							}
 							else if (item.SPD_ABS < 30)
 							{
 								name = "Bearded Axe";
-								model = 316;
+								model = 3680;
 							}
 							else if (item.SPD_ABS < 36)
 							{
 								name = "War Axe";
-								model = 319;
+								model = 3469;
 							}
 							else if (item.SPD_ABS < 40)
 							{
 								name = "Spiked Axe";
-								model = 315;
+								model = 1023;
 							}
 							else
 							{
 								name = "Double-bladed Axe";
-								model = 573;
+								model = 3900;
 							}
 						}
 						break;
@@ -936,14 +936,14 @@ namespace DOL.GS
 						if (item.SPD_ABS < 27)
 						{
 							name = "Short Sword";
-							model = 445;
+							model = 460;
 							item.Hand = 2; // allow left hand
 							item.Item_Type = Slot.LEFTHAND;
 						}
 						else if (item.SPD_ABS < 30)
 						{
 							name = "Falcata";
-							model = 444;
+							model = 8;
 							item.Hand = 2; // allow left hand
 							item.Item_Type = Slot.LEFTHAND;
 						}
@@ -960,7 +960,7 @@ namespace DOL.GS
 						else
 						{
 							name = "Bastard Sword";
-							model = 473;
+							model = 453;
 						}
 						break;
 					}
@@ -971,31 +971,31 @@ namespace DOL.GS
 						if (item.SPD_ABS < 30)
 						{
 							name = "Club";
-							model = 449;
+							model = 3248;
 							item.Hand = 2; // allow left hand
 							item.Item_Type = Slot.LEFTHAND;
 						}
 						else if (item.SPD_ABS < 35)
 						{
 							name = "Mace";
-							model = 450;
+							model = 2683;
 							item.Hand = 2; // allow left hand
 							item.Item_Type = Slot.LEFTHAND;
 						}
 						else if (item.SPD_ABS < 40)
 						{
 							name = "Hammer";
-							model = 461;
+							model = 3246;
 						}
 						else if (item.SPD_ABS < 43)
 						{
 							name = "Spiked Mace";
-							model = 451;
+							model = 323;
 						}
 						else
 						{
 							name = "Pick Hammer";
-							model = 641;
+							model = 656;
 						}
 						break;
 					}
@@ -1005,22 +1005,22 @@ namespace DOL.GS
 						if (item.SPD_ABS < 35)
 						{
 							name = "Short Spear";
-							model = 470;
+							model = 939;
 						}
 						else if (item.SPD_ABS < 45)
 						{
 							name = "Spear";
-							model = 469;
+							model = 475;
 						}
 						else if (item.SPD_ABS < 50)
 						{
 							name = "Long Spear";
-							model = 476;
+							model = 1036;
 						}
 						else
 						{
 							name = "War Spear";
-							model = 477;
+							model = 3880;
 						}
 						break;
 					}
@@ -1031,7 +1031,7 @@ namespace DOL.GS
 						else
 							name = "Composite Bow";
 
-						model = 564;
+						model = 851;
 						break;
 					}
 				case eObjectType.Crossbow:
@@ -1053,19 +1053,19 @@ namespace DOL.GS
 						else if (item.SPD_ABS < 35)
 						{
 							name = "Mace";
-							model = 13;
+							model = 3466;
 							item.Hand = 2; // allow left hand
 							item.Item_Type = Slot.LEFTHAND;
 						}
 						else if (item.SPD_ABS < 40)
 						{
 							name = "Flanged Mace";
-							model = 14;
+							model = 451;
 						}
 						else
 						{
 							name = "War Hammer";
-							model = 15;
+							model = 3973;
 						}
 						break;
 					}
@@ -1074,12 +1074,12 @@ namespace DOL.GS
 						if (realm == eRealm.Albion)
 						{
 							name = "Short Bow";
-							model = 569;
+							model = 851;
 						}
 						else // hibernia
 						{
 							name = "Short Bow";
-							model = 922;
+							model = 852;
 						}
 						break;
 					}
@@ -1092,17 +1092,17 @@ namespace DOL.GS
 									if (item.SPD_ABS < 33)
 									{
 										name = "Morning Star";
-										model = 862;
+										model = 1925;
 									}
 									else if (item.SPD_ABS < 40)
 									{
 										name = "Flail";
-										model = 861;
+										model = 1921;
 									}
 									else
 									{
 										name = "Weighted Flail";
-										model = 864;
+										model = 2132;
 									}
 									break;
 								}
@@ -1111,7 +1111,7 @@ namespace DOL.GS
 									if (item.SPD_ABS < 33)
 									{
 										name = "Whip";
-										model = 867;
+										model = 859;
 									}
 									else if (item.SPD_ABS < 40)
 									{
@@ -1121,7 +1121,7 @@ namespace DOL.GS
 									else
 									{
 										name = "War Chain";
-										model = 866;
+										model = 3654;
 									}
 									break;
 								}
@@ -1136,17 +1136,17 @@ namespace DOL.GS
 							if (item.SPD_ABS < 50)
 							{
 								name = "Two Handed Hammer";
-								model = 574;
+								model = 3338;
 							}
 							if (item.SPD_ABS < 53)
 							{
 								name = "Two Handed War Hammer";
-								model = 575;
+								model = 1980;
 							}
 							else
 							{
 								name = "Great Hammer";
-								model = 576;
+								model = 1986;
 							}
 						}
 						else
@@ -1154,22 +1154,22 @@ namespace DOL.GS
 							if (item.SPD_ABS < 30)
 							{
 								name = "Small Hammer";
-								model = 320;
+								model = 2673;
 							}
 							else if (item.SPD_ABS < 35)
 							{
 								name = "Hammer";
-								model = 321;
+								model = 3677;
 							}
 							else if (item.SPD_ABS < 40)
 							{
 								name = "Pick Hammer";
-								model = 323;
+								model = 2676;
 							}
 							else
 							{
 								name = "Battle Hammer";
-								model = 324;
+								model = 3337;
 							}
 						}
 						break;
@@ -1183,17 +1183,17 @@ namespace DOL.GS
 									if (item.SPD_ABS < 30)
 									{
 										name = "Moon Claw";
-										model = 981;
+										model = 967;
 									}
 									else if (item.SPD_ABS < 35)
 									{
 										name = "Bladed Moon Claw";
-										model = 961;
+										model = 2027;
 									}
 									else
 									{
 										name = "Heavy Bladed Moon Claw";
-										model = 975;
+										model = 979;
 									}
 									break;
 								}
@@ -1202,12 +1202,12 @@ namespace DOL.GS
 									if (item.SPD_ABS < 30)
 									{
 										name = "Claw Greave";
-										model = 963;
+										model = 2024;
 									}
 									else if (item.SPD_ABS < 35)
 									{
 										name = "Bladed Claw Greave";
-										model = 959;
+										model = 2023;
 									}
 									else
 									{
@@ -1247,57 +1247,22 @@ namespace DOL.GS
 						}
 						break;
 					}
-				case eObjectType.LargeWeapons:
-					{
-						switch (damage)
-						{
-							case eDamageType.Slash:
-								{
-									if (item.SPD_ABS < 50)
-									{
-										name = "Great Falcata";
-										model = 639;
-									}
-									else
-									{
-										name = "Great Sword";
-										model = 459;
-									}
-									break;
-								}
-							case eDamageType.Crush:
-								{
-									if (item.SPD_ABS < 50)
-									{
-										name = "Big Shillelagh";
-										model = 474;
-									}
-									else
-									{
-										name = "Great Hammer";
-										model = 462;
-									}
-									break;
-								}
-						}
-						break;
-					}
 				case eObjectType.LeftAxe:
 					{
 						if (item.SPD_ABS < 25)
 						{
 							name = "Hand Axe";
-							model = 578;
+							model = 1011;
 						}
 						else if (item.SPD_ABS < 30)
 						{
 							name = "Bearded Axe";
-							model = 316;
+							model = 1014;
 						}
 						else
 						{
 							name = "War Axe";
-							model = 319;
+							model = 3900;
 						}
 						break;
 					}
@@ -1306,17 +1271,17 @@ namespace DOL.GS
 						if (item.SPD_ABS < 44)
 						{
 							name = "Hunting Bow";
-							model = 569;
+							model = 848;
 						}
 						else if (item.SPD_ABS < 55)
 						{
 							name = "Longbow";
-							model = 132;
+							model = 3275;
 						}
 						else
 						{
 							name = "Heavy Longbow";
-							model = 570;
+							model = 2668;
 						}
 						break;
 					}
@@ -1332,9 +1297,9 @@ namespace DOL.GS
 										name = "Cloak";
 
 									if (Util.Chance(50))
-										model = 57;
+										model = 3632;
 									else if (Util.Chance(50))
-										model = 559;
+										model = 557;
 									else
 										model = 560;
 
@@ -1405,26 +1370,26 @@ namespace DOL.GS
 						if (item.SPD_ABS < 24)
 						{
 							name = "Dirk";
-							model = 454;
+							model = 2684;
 							item.Hand = 2; // allow left hand
 							item.Item_Type = Slot.LEFTHAND;
 						}
 						else if (item.SPD_ABS < 27)
 						{
 							name = "Stiletto";
-							model = 456;
+							model = 2686;
 							item.Hand = 2; // allow left hand
 							item.Item_Type = Slot.LEFTHAND;
 						}
 						else if (item.SPD_ABS < 30)
 						{
 							name = "Curved Dagger";
-							model = 457;
+							model = 3257;
 						}
 						else
 						{
 							name = "Rapier";
-							model = 455;
+							model = 3252;
 						}
 						break;
 					}
@@ -1435,19 +1400,19 @@ namespace DOL.GS
 							case eDamageType.Slash:
 								{
 									name = "Lochaber Axe";
-									model = 68;
+									model = 3715;
 									break;
 								}
 							case eDamageType.Thrust:
 								{
 									name = "Pike";
-									model = 69;
+									model = 475;
 									break;
 								}
 							case eDamageType.Crush:
 								{
 									name = "Lucerne Hammer";
-									model = 70;
+									model = 3716;
 									break;
 								}
 						}
@@ -1458,12 +1423,12 @@ namespace DOL.GS
 						if (item.SPD_ABS > 49)
 						{
 							name = "Great Recurve Bow";
-							model = 925;
+							model = 918;
 						}
 						else
 						{
 							name = "Recurve Bow";
-							model = 924;
+							model = 920;
 						}
 						break;
 					}
@@ -1472,17 +1437,17 @@ namespace DOL.GS
 						if (item.SPD_ABS < 47)
 						{
 							name = "Scythe";
-							model = 931;
+							model = 2003;
 						}
 						else if (item.SPD_ABS < 51)
 						{
 							name = "Martial Scythe";
-							model = 930;
+							model = 2693;
 						}
 						else
 						{
 							name = "War Scythe";
-							model = 932;
+							model = 2213;
 						}
 						break;
 					}
@@ -1493,7 +1458,7 @@ namespace DOL.GS
 							case 1:
 								{
 									name = "Small Shield";
-									model = 59;
+									model = 1041;
 									break;
 								}
 							case 2:
@@ -1505,7 +1470,7 @@ namespace DOL.GS
 							case 3:
 								{
 									name = "Large Shield";
-									model = 60;
+									model = 1059;
 									break;
 								}
 						}
@@ -1516,7 +1481,7 @@ namespace DOL.GS
 						if (item.SPD_ABS < 26)
 						{
 							name = "Dagger";
-							model = 1;
+							model = 885;
 							item.Hand = 2; // allow left hand
 							item.Item_Type = Slot.LEFTHAND;
 						}
@@ -1530,7 +1495,7 @@ namespace DOL.GS
 							else
 							{
 								name = "Short Sword";
-								model = 3;
+								model = 1947;
 							}
 							item.Hand = 2; // allow left hand
 							item.Item_Type = Slot.LEFTHAND;
@@ -1538,22 +1503,22 @@ namespace DOL.GS
 						else if (item.SPD_ABS < 32)
 						{
 							name = "Broadsword";
-							model = 5;
+							model = 2057;
 						}
 						else if (item.SPD_ABS < 35)
 						{
 							name = "Scimitar";
-							model = 8;
+							model = 3274;
 						}
 						else if (item.SPD_ABS < 40)
 						{
 							name = "Long Sword";
-							model = 4;
+							model = 3276;
 						}
 						else
 						{
 							name = "Bastard Sword";
-							model = 10;
+							model = 3249;
 						}
 						break;
 					}
@@ -1562,17 +1527,17 @@ namespace DOL.GS
 						if (item.SPD_ABS < 43)
 						{
 							name = "Spear";
-							model = 328;
+							model = 477;
 						}
 						else if (item.SPD_ABS < 50)
 						{
 							name = "Long Spear";
-							model = 329;
+							model = 934;
 						}
 						else
 						{
 							name = "Great Spear";
-							model = 332;
+							model = 475;
 						}
 						break;
 					}
@@ -1595,17 +1560,17 @@ namespace DOL.GS
 									if (item.SPD_ABS < 40)
 									{
 										name = "Quarterstaff";
-										model = 442;
+										model = 3927;
 									}
 									else if (item.SPD_ABS < 50)
 									{
 										name = "Shod Quarterstaff";
-										model = 567;
+										model = 3464;
 									}
 									else
 									{
 										name = "Heavy Shod Quarterstaff";
-										model = 884;
+										model = 3709;
 									}
 								}
 								else
@@ -1613,12 +1578,12 @@ namespace DOL.GS
 									if (item.SPD_ABS < 40)
 									{
 										name = "Staff";
-										model = 568;
+										model = 2065;
 									}
 									else
 									{
 										name = "Staff";
-										model = 19;
+										model = 2199;
 									}
 								}
 								break;
@@ -1628,19 +1593,19 @@ namespace DOL.GS
 								if (item.SPD_ABS < 40)
 								{
 									name = "Staff";
-									model = 327;
+									model = 2019;
 								}
 								else
 								{
 									name = "Staff";
-									model = 565;
+									model = 3230;
 								}
 								break;
 
 							case eRealm.Hibernia:
 
 								name = "Staff";
-								model = 468;
+								model = 3226;
 								break;
 						}
 						break;
@@ -1652,12 +1617,12 @@ namespace DOL.GS
 							if (item.SPD_ABS > 46)
 							{
 								name = "Great Sword";
-								model = 572;
+								model = 2060;
 							}
 							else
 							{
 								name = "Two Handed Sword";
-								model = 314;
+								model = 3878;
 							}
 						}
 						else
@@ -1665,27 +1630,27 @@ namespace DOL.GS
 							if (item.SPD_ABS < 25)
 							{
 								name = "Dagger";
-								model = 571;
+								model = 2682;
 							}
 							else if (item.SPD_ABS < 30)
 							{
 								name = "Short Sword";
-								model = 311;
+								model = 3284;
 							}
 							else if (item.SPD_ABS < 32)
 							{
 								name = "Broadsword";
-								model = 312;
+								model = 3717;
 							}
 							else if (item.SPD_ABS < 35)
 							{
 								name = "Long Sword";
-								model = 310;
+								model = 1972;
 							}
 							else
 							{
 								name = "Bastard Sword";
-								model = 313;
+								model = 3936;
 							}
 						}
 						break;
@@ -1695,33 +1660,33 @@ namespace DOL.GS
 						if (item.SPD_ABS < 24)
 						{
 							name = "Dirk";
-							model = 21;
+							model = 1973;
 							item.Hand = 2; // allow left hand
 							item.Item_Type = Slot.LEFTHAND;
 						}
 						else if (item.SPD_ABS < 28)
 						{
 							name = "Stiletto";
-							model = 71;
+							model = 1958;
 							item.Hand = 2; // allow left hand
 							item.Item_Type = Slot.LEFTHAND;
 						}
 						else if (item.SPD_ABS < 30)
 						{
 							name = "Main Gauche";
-							model = 25;
+							model = 3898;
 							item.Hand = 2; // allow left hand
 							item.Item_Type = Slot.LEFTHAND;
 						}
 						else if (item.SPD_ABS < 36)
 						{
 							name = "Rapier";
-							model = 22;
+							model = 1954;
 						}
 						else
 						{
 							name = "Gladius";
-							model = 30;
+							model = 2009;
 						}
 						break;
 					}
@@ -1734,7 +1699,7 @@ namespace DOL.GS
 									if (item.SPD_ABS < 44)
 									{
 										name = "Two Handed Sword";
-										model = 6;
+										model = 3877;
 									}
 									else if (item.SPD_ABS < 48)
 									{
@@ -1744,19 +1709,19 @@ namespace DOL.GS
 									else if (item.SPD_ABS < 51)
 									{
 										name = "Great Scimitar";
-										model = 645;
+										model = 3818;
 									}
 									else
 									{
 										name = "Great Sword";
-										model = 7;
+										model = 72;
 									}
 									break;
 								}
 							case eDamageType.Crush:
 								{
 									name = "Great Hammer";
-									model = 17;
+									model = 3661;
 									break;
 								}
 							case eDamageType.Thrust:
@@ -1764,12 +1729,12 @@ namespace DOL.GS
 									if (item.SPD_ABS < 46)
 									{
 										name = "War Mattock";
-										model = 16;
+										model = 3922;
 									}
 									else
 									{
 										name = "War Pick";
-										model = 646;
+										model = 3821;
 									}
 									break;
 								}
@@ -1817,7 +1782,7 @@ namespace DOL.GS
 			{
 				if (item.Level > 50)
 					item.Extension = 3;
-				if (item.Level > 35)
+				if (item.Level > 1)
 					item.Extension = 2;
 			}
 
@@ -2588,44 +2553,7 @@ namespace DOL.GS
 							return true;
 						return false;
 					}
-				case eProperty.Skill_Instruments:
-					{
-						if (level < 10)
-						{
-							if (type == eObjectType.Leather)
-								return true;
-							return false;
-						}
-						else if (level < 20)
-						{
-							if (type == eObjectType.Studded)
-								return true;
-							return false;
-						}
-						else
-						{
-							if (type == eObjectType.Chain)
-								return true;
-							return false;
-						}
-					}
-				case eProperty.Skill_Large_Weapon:
-					{
-						if (level < 15)
-						{
-							if (type == eObjectType.Reinforced)
-								return true;
-
-							return false;
-						}
-						else
-						{
-							if (type == eObjectType.Scale)
-								return true;
-
-							return false;
-						}
-					}
+				
 				case eProperty.Skill_Left_Axe:
 					{
 						if (type == eObjectType.Leather || type == eObjectType.Studded)
@@ -3160,18 +3088,7 @@ namespace DOL.GS
 							return true;
 						break;
 					}
-				case eProperty.Skill_Instruments:
-					{
-						if (type == eObjectType.Instrument || (type == eObjectType.Shield && item.Type_Damage == 1))
-							return true;
-						break;
-					}
-				case eProperty.Skill_Large_Weapon:
-					{
-						if (type == eObjectType.LargeWeapons)
-							return true;
-						break;
-					}
+				
 				case eProperty.Skill_Left_Axe:
 					{
 						if (type == eObjectType.Axe || type == eObjectType.LeftAxe)
@@ -3386,29 +3303,23 @@ namespace DOL.GS
 
 		private static bool StatIsValidForRealm(eRealm realm, eProperty property)
 		{
-			switch (property)
-			{
-				case eProperty.Piety:
-				case eProperty.PieCapBonus:
-					{
-						if (realm == eRealm.Hibernia)
+            switch (property)
+            {
+                case eProperty.Piety:
+                case eProperty.PieCapBonus:
+                    {
+                        if (realm == eRealm.Hibernia || realm == eRealm.Albion || realm == eRealm.Midgard)
+                            return false;
+                        break;
+                    }
+                case eProperty.Empathy:
+                case eProperty.EmpCapBonus:
+                    {
+                        if (realm == eRealm.Midgard || realm == eRealm.Albion || realm == eRealm.Hibernia)
 							return false;
 						break;
 					}
-				case eProperty.Empathy:
-				case eProperty.EmpCapBonus:
-					{
-						if (realm == eRealm.Midgard || realm == eRealm.Albion)
-							return false;
-						break;
-					}
-				case eProperty.Intelligence:
-				case eProperty.IntCapBonus:
-					{
-						if (realm == eRealm.Midgard)
-							return false;
-						break;
-					}
+				
 			}
 			return true;
 		}
@@ -3422,116 +3333,29 @@ namespace DOL.GS
 			{
 				case eProperty.Intelligence:
 				case eProperty.IntCapBonus:
-					{
-						if (realm == eRealm.Midgard)
-							return false;
-
-						if (realm == eRealm.Hibernia && item.Level < 20 && type != eObjectType.Reinforced && type != eObjectType.Cloth)
-							return false;
-
-						if (realm == eRealm.Hibernia && item.Level >= 20 && type != eObjectType.Scale && type != eObjectType.Cloth)
-							return false;
-
-						if (type != eObjectType.Cloth)
-							return false;
-
-						break;
-					}
-				case eProperty.Acuity:
+		        case eProperty.Acuity:
 				case eProperty.AcuCapBonus:
 				case eProperty.PowerPool:
 				case eProperty.PowerPoolCapBonus:
 					{
-						if (realm == eRealm.Albion && item.Level >= 20 && type == eObjectType.Studded)
-							return false;
-
-						if (realm == eRealm.Midgard && item.Level >= 10 && type == eObjectType.Leather)
-							return false;
-
-						if (realm == eRealm.Midgard && item.Level >= 20 && type == eObjectType.Studded)
-							return false;
-
-						break;
+                        return true;
 					}
 				case eProperty.Piety:
 				case eProperty.PieCapBonus:
 					{
-						if (realm == eRealm.Albion)
-						{
-							if (type == eObjectType.Leather && item.Level >= 10)
-								return false;
-
-							if (type == eObjectType.Studded && item.Level >= 20)
-								return false;
-
-							if (type == eObjectType.Chain && item.Level < 10)
-								return false;
-						}
-						else if (realm == eRealm.Midgard)
-						{
-							if (type == eObjectType.Leather && item.Level >= 10)
-								return false;
-
-							if (type == eObjectType.Studded && item.Level >= 20)
-								return false;
-
-							if (type == eObjectType.Chain && item.Level < 10)
-								return false;
-						}
-						else if (realm == eRealm.Hibernia)
-						{
-							return false;
-						}
-						break;
+                        return false;
 					}
 				case eProperty.Charisma:
 				case eProperty.ChaCapBonus:
 					{
-						if (realm == eRealm.Albion)
-						{
-							if (type == eObjectType.Leather && item.Level >= 10)
-								return false;
-
-							if (type == eObjectType.Studded && item.Level >= 20)
-								return false;
-
-							if (type == eObjectType.Chain && item.Level < 20)
-								return false;
-						}
-						if (realm == eRealm.Midgard)
-						{
-							if (type == eObjectType.Studded && item.Level >= 20)
-								return false;
-
-							if (type == eObjectType.Chain && item.Level < 20)
-								return false;
-						}
-						else if (realm == eRealm.Hibernia)
-						{
-							if (type == eObjectType.Leather && item.Level >= 15)
-								return false;
-
-							if (type == eObjectType.Reinforced && item.Level < 15)
-								return false;
-						}
-						break;
+                        return false;
 					}
 				case eProperty.Empathy:
 				case eProperty.EmpCapBonus:
 					{
-						if (realm != eRealm.Hibernia)
-							return false;
+						return false;
 
-						if (type == eObjectType.Leather && item.Level >= 10)
-							return false;
-
-						if (type == eObjectType.Reinforced && item.Level >= 20)
-							return false;
-
-						if (type == eObjectType.Scale && item.Level < 20)
-							return false;
-
-						break;
+					
 					}
 			}
 			return true;
@@ -3548,18 +3372,16 @@ namespace DOL.GS
 					{
 						if ((property == eProperty.Piety || property == eProperty.PieCapBonus) && realm == eRealm.Hibernia)
 							return false;
-						else if ((property == eProperty.Piety || property == eProperty.PieCapBonus) && realm == eRealm.Albion && item.Description != "friar")
+						else if ((property == eProperty.Piety || property == eProperty.PieCapBonus) && realm == eRealm.Albion)
 							return false; // caster staff
 						else if (property == eProperty.Charisma || property == eProperty.Empathy || property == eProperty.ChaCapBonus || property == eProperty.EmpCapBonus)
-							return false;
-						else if ((property == eProperty.Intelligence || property == eProperty.IntCapBonus || property == eProperty.AcuCapBonus) && item.Description == "friar")
 							return false;
 						break;
 					}
 
 				case eObjectType.Shield:
 					{
-						if ((realm == eRealm.Albion || realm == eRealm.Midgard) && (property == eProperty.Intelligence || property == eProperty.IntCapBonus || property == eProperty.Empathy || property == eProperty.EmpCapBonus))
+						if ((realm == eRealm.Albion || realm == eRealm.Midgard) && (property == eProperty.Empathy || property == eProperty.EmpCapBonus))
 							return false;
 						else if (realm == eRealm.Hibernia && (property == eProperty.Piety || property == eProperty.PieCapBonus))
 							return false;
@@ -3567,9 +3389,7 @@ namespace DOL.GS
 							return false;
 						else if (realm == eRealm.Midgard && item.Type_Damage > 2 && (property == eProperty.Charisma || property == eProperty.ChaCapBonus))
 							return false;
-						else if (item.Type_Damage > 2 && property == eProperty.MaxMana)
-							return false;
-
+					
 						break;
 					}
 				case eObjectType.Blades:
@@ -3589,7 +3409,7 @@ namespace DOL.GS
 					}
 				case eObjectType.CrushingWeapon:
 					{
-						if (property == eProperty.Intelligence || property == eProperty.IntCapBonus || property == eProperty.Empathy || property == eProperty.EmpCapBonus || property == eProperty.Charisma || property == eProperty.ChaCapBonus)
+						if (property == eProperty.Empathy || property == eProperty.EmpCapBonus || property == eProperty.Charisma || property == eProperty.ChaCapBonus)
 							return false;
 						break;
 					}
@@ -3599,14 +3419,14 @@ namespace DOL.GS
 				case eObjectType.Sword:
 				case eObjectType.Axe:
 					{
-						if (property == eProperty.Intelligence || property == eProperty.IntCapBonus || property == eProperty.Empathy || property == eProperty.EmpCapBonus || property == eProperty.AcuCapBonus || property == eProperty.Acuity)
+						if (property == eProperty.Empathy || property == eProperty.EmpCapBonus)
 							return false;
 						break;
 					}
 				case eObjectType.TwoHandedWeapon:
 				case eObjectType.Flexible:
 					{
-						if (property == eProperty.Intelligence || property == eProperty.IntCapBonus || property == eProperty.Empathy || property == eProperty.EmpCapBonus || property == eProperty.Charisma || property == eProperty.ChaCapBonus)
+						if (property == eProperty.Empathy || property == eProperty.EmpCapBonus || property == eProperty.Charisma || property == eProperty.ChaCapBonus)
 							return false;
 						break;
 					}
@@ -3616,8 +3436,8 @@ namespace DOL.GS
 				case eObjectType.Crossbow:
 				case eObjectType.Fired:
 					{
-						if (property == eProperty.Intelligence || property == eProperty.IntCapBonus || property == eProperty.Empathy || property == eProperty.EmpCapBonus || property == eProperty.Charisma || property == eProperty.ChaCapBonus ||
-							property == eProperty.MaxMana || property == eProperty.PowerPool || property == eProperty.PowerPoolCapBonus || property == eProperty.AcuCapBonus || property == eProperty.Acuity || property == eProperty.Piety || property == eProperty.PieCapBonus)
+						if (property == eProperty.Empathy || property == eProperty.EmpCapBonus || property == eProperty.Charisma || property == eProperty.ChaCapBonus ||
+							 property == eProperty.PowerPoolCapBonus ||  property == eProperty.Piety || property == eProperty.PieCapBonus)
 							return false;
 						break;
 					}
@@ -3629,14 +3449,14 @@ namespace DOL.GS
 				case eObjectType.FistWraps: //Maulers
 				case eObjectType.MaulerStaff: //Maulers
 					{
-						if (property == eProperty.Intelligence || property == eProperty.IntCapBonus || property == eProperty.Empathy || property == eProperty.EmpCapBonus || property == eProperty.Charisma || property == eProperty.ChaCapBonus ||
-							property == eProperty.MaxMana || property == eProperty.PowerPool || property == eProperty.PowerPoolCapBonus || property == eProperty.AcuCapBonus || property == eProperty.Acuity || property == eProperty.Piety || property == eProperty.PieCapBonus)
+						if ( property == eProperty.Empathy || property == eProperty.EmpCapBonus || property == eProperty.Charisma || property == eProperty.ChaCapBonus ||
+							 property == eProperty.Piety || property == eProperty.PieCapBonus)
 							return false;
 						break;
 					}
 				case eObjectType.Instrument:
 					{
-						if (property == eProperty.Intelligence || property == eProperty.IntCapBonus || property == eProperty.Empathy || property == eProperty.EmpCapBonus || property == eProperty.Piety || property == eProperty.PieCapBonus)
+						if (property == eProperty.Empathy || property == eProperty.EmpCapBonus || property == eProperty.Piety || property == eProperty.PieCapBonus)
 							return false;
 						break;
 					}
@@ -4109,39 +3929,111 @@ namespace DOL.GS
 
 		private static eProperty[] AlbSkillBonus = new eProperty[] 
         {
-	        eProperty.Skill_Two_Handed,
-	        eProperty.Skill_Body,
+            eProperty.Skill_Critical_Strike,
+            eProperty.Skill_Envenom,
+            eProperty.Skill_Parry,
+            eProperty.Skill_Shields,
+            eProperty.Skill_Stealth,
+            eProperty.Skill_Light,
+            eProperty.Skill_Void,
+            eProperty.Skill_Mana,
+            eProperty.Skill_Blades,
+            eProperty.Skill_Blunt,
+            eProperty.Skill_Piercing,
+            eProperty.Skill_Mentalism,
+            eProperty.Skill_Regrowth,
+            eProperty.Skill_Nurture,
+            eProperty.Skill_Nature,
+            eProperty.Skill_Music,
+            eProperty.Skill_Celtic_Dual,
+            eProperty.Skill_Celtic_Spear,
+            eProperty.Skill_Archery,
+            eProperty.Skill_Valor,
+            eProperty.Skill_Verdant,
+            eProperty.Skill_Creeping,
+            eProperty.Skill_Arboreal,
+            eProperty.Skill_Scythe,
+	        //eProperty.Skill_Nightshade, // bonus not used
+	        //eProperty.Skill_Pathfinding, // bonus not used
+	        eProperty.Skill_Dementia,
+            eProperty.Skill_ShadowMastery,
+            eProperty.Skill_VampiiricEmbrace,
+            eProperty.Skill_EtherealShriek,
+            eProperty.Skill_PhantasmalWail,
+            eProperty.Skill_SpectralForce,
+            eProperty.Skill_Aura_Manipulation, //Maulers
+			eProperty.Skill_FistWraps, //Maulers
+			eProperty.Skill_MaulerStaff, //Maulers
+			eProperty.Skill_Magnetism, //Maulers
+			eProperty.Skill_Power_Strikes, //Maulers
+            eProperty.Skill_Two_Handed,
+            eProperty.Skill_Body,
 	        //eProperty.Skill_Chants, // bonus not used
 	        eProperty.Skill_Critical_Strike,
-	        eProperty.Skill_Cross_Bows,
-	        eProperty.Skill_Crushing,
-	        eProperty.Skill_Death_Servant,
-	        eProperty.Skill_DeathSight,
-	        eProperty.Skill_Dual_Wield,
-	        eProperty.Skill_Earth,
-	        eProperty.Skill_Enhancement,
-	        eProperty.Skill_Envenom,
-	        eProperty.Skill_Fire,
-	        eProperty.Skill_Flexible_Weapon,
-	        eProperty.Skill_Cold,
-	        eProperty.Skill_Instruments,
+            eProperty.Skill_Cross_Bows,
+            eProperty.Skill_Crushing,
+            eProperty.Skill_Death_Servant,
+            eProperty.Skill_DeathSight,
+            eProperty.Skill_Dual_Wield,
+            eProperty.Skill_Earth,
+            eProperty.Skill_Enhancement,
+            eProperty.Skill_Envenom,
+            eProperty.Skill_Fire,
+            eProperty.Skill_Flexible_Weapon,
+            eProperty.Skill_Cold,
+            eProperty.Skill_Archery,
+            eProperty.Skill_Matter,
+            eProperty.Skill_Mind,
+            eProperty.Skill_Pain_working,
+            eProperty.Skill_Parry,
+            eProperty.Skill_Polearms,
+            eProperty.Skill_Rejuvenation,
+            eProperty.Skill_Shields,
+            eProperty.Skill_Slashing,
+            eProperty.Skill_Smiting,
+            eProperty.Skill_SoulRending,
+            eProperty.Skill_Spirit,
+            eProperty.Skill_Staff,
+            eProperty.Skill_Stealth,
+            eProperty.Skill_Thrusting,
+            eProperty.Skill_Wind,
+            eProperty.Skill_Aura_Manipulation, //Maulers
+			eProperty.Skill_FistWraps, //Maulers
+			eProperty.Skill_MaulerStaff, //Maulers
+			eProperty.Skill_Magnetism, //Maulers
+			eProperty.Skill_Power_Strikes, //Maulers
+             eProperty.Skill_Critical_Strike,
+            eProperty.Skill_Envenom,
+            eProperty.Skill_Parry,
+            eProperty.Skill_Shields,
+            eProperty.Skill_Stealth,
+            eProperty.Skill_Sword,
+            eProperty.Skill_Hammer,
+            eProperty.Skill_Axe,
+            eProperty.Skill_Left_Axe,
+            eProperty.Skill_Spear,
+            eProperty.Skill_Mending,
+            eProperty.Skill_Augmentation,
+	        //Skill_Cave_Magic = 59,
+	        eProperty.Skill_Darkness,
+            eProperty.Skill_Suppression,
+            eProperty.Skill_Runecarving,
+            eProperty.Skill_Stormcalling,
+	        //eProperty.Skill_BeastCraft, // bonus not used
 			eProperty.Skill_Archery,
-	        eProperty.Skill_Matter,
-	        eProperty.Skill_Mind,
-	        eProperty.Skill_Pain_working,
-	        eProperty.Skill_Parry,
-	        eProperty.Skill_Polearms,
-	        eProperty.Skill_Rejuvenation,
-	        eProperty.Skill_Shields,
-	        eProperty.Skill_Slashing,
-	        eProperty.Skill_Smiting,
-	        eProperty.Skill_SoulRending,
-	        eProperty.Skill_Spirit,
-	        eProperty.Skill_Staff,
-	        eProperty.Skill_Stealth,
-	        eProperty.Skill_Thrusting,
-	        eProperty.Skill_Wind,
-			eProperty.Skill_Aura_Manipulation, //Maulers
+            eProperty.Skill_Battlesongs,
+            eProperty.Skill_Subterranean,
+            eProperty.Skill_BoneArmy,
+            eProperty.Skill_Thrown_Weapons,
+            eProperty.Skill_HandToHand,
+    		//eProperty.Skill_Pacification,
+	        //eProperty.Skill_Savagery,
+	        eProperty.Skill_OdinsWill,
+            eProperty.Skill_Cursing,
+            eProperty.Skill_Hexing,
+            eProperty.Skill_Witchcraft,
+            eProperty.Skill_Summoning,
+            eProperty.Skill_Aura_Manipulation, //Maulers
 			eProperty.Skill_FistWraps, //Maulers
 			eProperty.Skill_MaulerStaff, //Maulers
 			eProperty.Skill_Magnetism, //Maulers
@@ -4162,7 +4054,6 @@ namespace DOL.GS
 	        eProperty.Skill_Blades,
 	        eProperty.Skill_Blunt,
 	        eProperty.Skill_Piercing,
-	        eProperty.Skill_Large_Weapon,
 	        eProperty.Skill_Mentalism,
 	        eProperty.Skill_Regrowth,
 	        eProperty.Skill_Nurture,
@@ -4189,42 +4080,187 @@ namespace DOL.GS
 			eProperty.Skill_MaulerStaff, //Maulers
 			eProperty.Skill_Magnetism, //Maulers
 			eProperty.Skill_Power_Strikes, //Maulers
+            eProperty.Skill_Two_Handed,
+            eProperty.Skill_Body,
+	        //eProperty.Skill_Chants, // bonus not used
+	        eProperty.Skill_Critical_Strike,
+            eProperty.Skill_Cross_Bows,
+            eProperty.Skill_Crushing,
+            eProperty.Skill_Death_Servant,
+            eProperty.Skill_DeathSight,
+            eProperty.Skill_Dual_Wield,
+            eProperty.Skill_Earth,
+            eProperty.Skill_Enhancement,
+            eProperty.Skill_Envenom,
+            eProperty.Skill_Fire,
+            eProperty.Skill_Flexible_Weapon,
+            eProperty.Skill_Cold,
+            eProperty.Skill_Archery,
+            eProperty.Skill_Matter,
+            eProperty.Skill_Mind,
+            eProperty.Skill_Pain_working,
+            eProperty.Skill_Parry,
+            eProperty.Skill_Polearms,
+            eProperty.Skill_Rejuvenation,
+            eProperty.Skill_Shields,
+            eProperty.Skill_Slashing,
+            eProperty.Skill_Smiting,
+            eProperty.Skill_SoulRending,
+            eProperty.Skill_Spirit,
+            eProperty.Skill_Staff,
+            eProperty.Skill_Stealth,
+            eProperty.Skill_Thrusting,
+            eProperty.Skill_Wind,
+            eProperty.Skill_Aura_Manipulation, //Maulers
+			eProperty.Skill_FistWraps, //Maulers
+			eProperty.Skill_MaulerStaff, //Maulers
+			eProperty.Skill_Magnetism, //Maulers
+			eProperty.Skill_Power_Strikes, //Maulers
+             eProperty.Skill_Critical_Strike,
+            eProperty.Skill_Envenom,
+            eProperty.Skill_Parry,
+            eProperty.Skill_Shields,
+            eProperty.Skill_Stealth,
+            eProperty.Skill_Sword,
+            eProperty.Skill_Hammer,
+            eProperty.Skill_Axe,
+            eProperty.Skill_Left_Axe,
+            eProperty.Skill_Spear,
+            eProperty.Skill_Mending,
+            eProperty.Skill_Augmentation,
+	        //Skill_Cave_Magic = 59,
+	        eProperty.Skill_Darkness,
+            eProperty.Skill_Suppression,
+            eProperty.Skill_Runecarving,
+            eProperty.Skill_Stormcalling,
+	        //eProperty.Skill_BeastCraft, // bonus not used
+			eProperty.Skill_Archery,
+            eProperty.Skill_Battlesongs,
+            eProperty.Skill_Subterranean,
+            eProperty.Skill_BoneArmy,
+            eProperty.Skill_Thrown_Weapons,
+            eProperty.Skill_HandToHand,
+    		//eProperty.Skill_Pacification,
+	        //eProperty.Skill_Savagery,
+	        eProperty.Skill_OdinsWill,
+            eProperty.Skill_Cursing,
+            eProperty.Skill_Hexing,
+            eProperty.Skill_Witchcraft,
+            eProperty.Skill_Summoning,
+            eProperty.Skill_Aura_Manipulation, //Maulers
+			eProperty.Skill_FistWraps, //Maulers
+			eProperty.Skill_MaulerStaff, //Maulers
+			eProperty.Skill_Magnetism, //Maulers
+			eProperty.Skill_Power_Strikes, //Maulers
         };
 
 		private static eProperty[] MidSkillBonus = new eProperty[] 
         {
+            eProperty.Skill_Critical_Strike,
+            eProperty.Skill_Envenom,
+            eProperty.Skill_Parry,
+            eProperty.Skill_Shields,
+            eProperty.Skill_Stealth,
+            eProperty.Skill_Light,
+            eProperty.Skill_Void,
+            eProperty.Skill_Mana,
+            eProperty.Skill_Blades,
+            eProperty.Skill_Blunt,
+            eProperty.Skill_Piercing,
+            eProperty.Skill_Mentalism,
+            eProperty.Skill_Regrowth,
+            eProperty.Skill_Nurture,
+            eProperty.Skill_Nature,
+            eProperty.Skill_Music,
+            eProperty.Skill_Celtic_Dual,
+            eProperty.Skill_Celtic_Spear,
+            eProperty.Skill_Archery,
+            eProperty.Skill_Valor,
+            eProperty.Skill_Verdant,
+            eProperty.Skill_Creeping,
+            eProperty.Skill_Arboreal,
+            eProperty.Skill_Scythe,
+	        //eProperty.Skill_Nightshade, // bonus not used
+	        //eProperty.Skill_Pathfinding, // bonus not used
+	        eProperty.Skill_Dementia,
+            eProperty.Skill_ShadowMastery,
+            eProperty.Skill_VampiiricEmbrace,
+            eProperty.Skill_EtherealShriek,
+            eProperty.Skill_PhantasmalWail,
+            eProperty.Skill_SpectralForce,
+            eProperty.Skill_Aura_Manipulation, //Maulers
+			eProperty.Skill_FistWraps, //Maulers
+			eProperty.Skill_MaulerStaff, //Maulers
+			eProperty.Skill_Magnetism, //Maulers
+			eProperty.Skill_Power_Strikes, //Maulers
+            eProperty.Skill_Two_Handed,
+            eProperty.Skill_Body,
+	        //eProperty.Skill_Chants, // bonus not used
 	        eProperty.Skill_Critical_Strike,
-	        eProperty.Skill_Envenom,
-	        eProperty.Skill_Parry,
-	        eProperty.Skill_Shields,
-	        eProperty.Skill_Stealth,
-	        eProperty.Skill_Sword,
-	        eProperty.Skill_Hammer,
-	        eProperty.Skill_Axe,
-	        eProperty.Skill_Left_Axe,
-	        eProperty.Skill_Spear,
-	        eProperty.Skill_Mending,
-	        eProperty.Skill_Augmentation,
+            eProperty.Skill_Cross_Bows,
+            eProperty.Skill_Crushing,
+            eProperty.Skill_Death_Servant,
+            eProperty.Skill_DeathSight,
+            eProperty.Skill_Dual_Wield,
+            eProperty.Skill_Earth,
+            eProperty.Skill_Enhancement,
+            eProperty.Skill_Envenom,
+            eProperty.Skill_Fire,
+            eProperty.Skill_Flexible_Weapon,
+            eProperty.Skill_Cold,
+            eProperty.Skill_Archery,
+            eProperty.Skill_Matter,
+            eProperty.Skill_Mind,
+            eProperty.Skill_Pain_working,
+            eProperty.Skill_Parry,
+            eProperty.Skill_Polearms,
+            eProperty.Skill_Rejuvenation,
+            eProperty.Skill_Shields,
+            eProperty.Skill_Slashing,
+            eProperty.Skill_Smiting,
+            eProperty.Skill_SoulRending,
+            eProperty.Skill_Spirit,
+            eProperty.Skill_Staff,
+            eProperty.Skill_Stealth,
+            eProperty.Skill_Thrusting,
+            eProperty.Skill_Wind,
+            eProperty.Skill_Aura_Manipulation, //Maulers
+			eProperty.Skill_FistWraps, //Maulers
+			eProperty.Skill_MaulerStaff, //Maulers
+			eProperty.Skill_Magnetism, //Maulers
+			eProperty.Skill_Power_Strikes, //Maulers
+             eProperty.Skill_Critical_Strike,
+            eProperty.Skill_Envenom,
+            eProperty.Skill_Parry,
+            eProperty.Skill_Shields,
+            eProperty.Skill_Stealth,
+            eProperty.Skill_Sword,
+            eProperty.Skill_Hammer,
+            eProperty.Skill_Axe,
+            eProperty.Skill_Left_Axe,
+            eProperty.Skill_Spear,
+            eProperty.Skill_Mending,
+            eProperty.Skill_Augmentation,
 	        //Skill_Cave_Magic = 59,
 	        eProperty.Skill_Darkness,
-	        eProperty.Skill_Suppression,
-	        eProperty.Skill_Runecarving,
-	        eProperty.Skill_Stormcalling,
+            eProperty.Skill_Suppression,
+            eProperty.Skill_Runecarving,
+            eProperty.Skill_Stormcalling,
 	        //eProperty.Skill_BeastCraft, // bonus not used
 			eProperty.Skill_Archery,
-	        eProperty.Skill_Battlesongs,
-	        eProperty.Skill_Subterranean,
-	        eProperty.Skill_BoneArmy,
-	        eProperty.Skill_Thrown_Weapons,
-	        eProperty.Skill_HandToHand,
+            eProperty.Skill_Battlesongs,
+            eProperty.Skill_Subterranean,
+            eProperty.Skill_BoneArmy,
+            eProperty.Skill_Thrown_Weapons,
+            eProperty.Skill_HandToHand,
     		//eProperty.Skill_Pacification,
 	        //eProperty.Skill_Savagery,
 	        eProperty.Skill_OdinsWill,
-	        eProperty.Skill_Cursing,
-	        eProperty.Skill_Hexing,
-	        eProperty.Skill_Witchcraft,
-    		eProperty.Skill_Summoning,
-			eProperty.Skill_Aura_Manipulation, //Maulers
+            eProperty.Skill_Cursing,
+            eProperty.Skill_Hexing,
+            eProperty.Skill_Witchcraft,
+            eProperty.Skill_Summoning,
+            eProperty.Skill_Aura_Manipulation, //Maulers
 			eProperty.Skill_FistWraps, //Maulers
 			eProperty.Skill_MaulerStaff, //Maulers
 			eProperty.Skill_Magnetism, //Maulers
@@ -4241,32 +4277,78 @@ namespace DOL.GS
 		// note that weapon array has been adjusted to add weight to more commonly used items
 		private static eObjectType[] AlbionWeapons = new eObjectType[] 
 		{
-			eObjectType.ThrustWeapon,
-			eObjectType.CrushingWeapon,
-			eObjectType.SlashingWeapon, 
-			eObjectType.Shield,
-			eObjectType.Staff,
-			eObjectType.TwoHandedWeapon,
-			eObjectType.Longbow,
-			eObjectType.Flexible,
-			eObjectType.PolearmWeapon,
-			eObjectType.FistWraps, //Maulers
+            eObjectType.Sword,
+            eObjectType.Blades,
+            eObjectType.Blunt,
+            eObjectType.Piercing,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.LargeWeapons,
+            eObjectType.CelticSpear,
+            eObjectType.Scythe,
+            eObjectType.RecurvedBow,
+            eObjectType.Instrument,
+            eObjectType.FistWraps,//Maulers
+			eObjectType.MaulerStaff,//Maulers
+            eObjectType.ThrustWeapon,
+            eObjectType.CrushingWeapon,
+            eObjectType.SlashingWeapon,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.TwoHandedWeapon,
+            eObjectType.Longbow,
+            eObjectType.Flexible,
+            eObjectType.PolearmWeapon,
+            eObjectType.FistWraps, //Maulers
 			eObjectType.MaulerStaff,//Maulers
 			eObjectType.Instrument,
-			eObjectType.Crossbow,
-			eObjectType.ThrustWeapon,
-			eObjectType.CrushingWeapon,
-			eObjectType.SlashingWeapon, 
-			eObjectType.Shield,
-			eObjectType.Staff,
-			eObjectType.TwoHandedWeapon,
-			eObjectType.Longbow,
-			eObjectType.Flexible,
-			eObjectType.PolearmWeapon,
-			eObjectType.FistWraps, //Maulers
+            eObjectType.Crossbow,
+            eObjectType.Hammer,
+            eObjectType.Axe,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.Spear,
+            eObjectType.CompositeBow ,
+            eObjectType.LeftAxe,
+            eObjectType.HandToHand,
+            eObjectType.FistWraps,//Maulers
+			eObjectType.MaulerStaff,//Maulers
+			eObjectType.Sword,
+            eObjectType.Blades,
+            eObjectType.Blunt,
+            eObjectType.Piercing,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.LargeWeapons,
+            eObjectType.CelticSpear,
+            eObjectType.Scythe,
+            eObjectType.RecurvedBow,
+            eObjectType.Instrument,
+            eObjectType.FistWraps,//Maulers
+			eObjectType.MaulerStaff,//Maulers
+            eObjectType.ThrustWeapon,
+            eObjectType.CrushingWeapon,
+            eObjectType.SlashingWeapon,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.TwoHandedWeapon,
+            eObjectType.Longbow,
+            eObjectType.Flexible,
+            eObjectType.PolearmWeapon,
+            eObjectType.FistWraps, //Maulers
 			eObjectType.MaulerStaff,//Maulers
 			eObjectType.Instrument,
-			eObjectType.Crossbow,
+            eObjectType.Crossbow,
+            eObjectType.Hammer,
+            eObjectType.Axe,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.Spear,
+            eObjectType.CompositeBow ,
+            eObjectType.LeftAxe,
+            eObjectType.HandToHand,
+            eObjectType.FistWraps,//Maulers
+			eObjectType.MaulerStaff,//Maulers
 		};
 
 		private static eObjectType[] AlbionArmor = new eObjectType[] 
@@ -4285,7 +4367,32 @@ namespace DOL.GS
 		private static eObjectType[] MidgardWeapons = new eObjectType[] 
 		{
 			eObjectType.Sword,
-			eObjectType.Hammer,
+            eObjectType.Blades,
+            eObjectType.Blunt,
+            eObjectType.Piercing,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.LargeWeapons,
+            eObjectType.CelticSpear,
+            eObjectType.Scythe,
+            eObjectType.RecurvedBow,
+            eObjectType.Instrument,
+            eObjectType.FistWraps,//Maulers
+			eObjectType.MaulerStaff,//Maulers
+            eObjectType.ThrustWeapon,
+            eObjectType.CrushingWeapon,
+            eObjectType.SlashingWeapon,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.TwoHandedWeapon,
+            eObjectType.Longbow,
+            eObjectType.Flexible,
+            eObjectType.PolearmWeapon,
+            eObjectType.FistWraps, //Maulers
+			eObjectType.MaulerStaff,//Maulers
+			eObjectType.Instrument,
+            eObjectType.Crossbow,
+            eObjectType.Hammer,
 			eObjectType.Axe,
 			eObjectType.Shield,
 			eObjectType.Staff,
@@ -4296,7 +4403,32 @@ namespace DOL.GS
 			eObjectType.FistWraps,//Maulers
 			eObjectType.MaulerStaff,//Maulers
 			eObjectType.Sword,
-			eObjectType.Hammer,
+            eObjectType.Blades,
+            eObjectType.Blunt,
+            eObjectType.Piercing,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.LargeWeapons,
+            eObjectType.CelticSpear,
+            eObjectType.Scythe,
+            eObjectType.RecurvedBow,
+            eObjectType.Instrument,
+            eObjectType.FistWraps,//Maulers
+			eObjectType.MaulerStaff,//Maulers
+            eObjectType.ThrustWeapon,
+            eObjectType.CrushingWeapon,
+            eObjectType.SlashingWeapon,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.TwoHandedWeapon,
+            eObjectType.Longbow,
+            eObjectType.Flexible,
+            eObjectType.PolearmWeapon,
+            eObjectType.FistWraps, //Maulers
+			eObjectType.MaulerStaff,//Maulers
+			eObjectType.Instrument,
+            eObjectType.Crossbow,
+            eObjectType.Hammer,
 			eObjectType.Axe,
 			eObjectType.Shield,
 			eObjectType.Staff,
@@ -4322,29 +4454,77 @@ namespace DOL.GS
 
 		private static eObjectType[] HiberniaWeapons = new eObjectType[] 
 		{
-			eObjectType.Blades,
-			eObjectType.Blunt,
-			eObjectType.Piercing,
-			eObjectType.Shield,
-			eObjectType.Staff,
-			eObjectType.LargeWeapons,
-			eObjectType.CelticSpear,
-			eObjectType.Scythe,
-			eObjectType.RecurvedBow,
-			eObjectType.Instrument,
-			eObjectType.FistWraps,//Maulers
+            eObjectType.Sword,
+            eObjectType.Blades,
+            eObjectType.Blunt,
+            eObjectType.Piercing,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.LargeWeapons,
+            eObjectType.CelticSpear,
+            eObjectType.Scythe,
+            eObjectType.RecurvedBow,
+            eObjectType.Instrument,
+            eObjectType.FistWraps,//Maulers
 			eObjectType.MaulerStaff,//Maulers
-			eObjectType.Blades,
-			eObjectType.Blunt,
-			eObjectType.Piercing,
-			eObjectType.Shield,
-			eObjectType.Staff,
-			eObjectType.LargeWeapons,
-			eObjectType.CelticSpear,
-			eObjectType.Scythe,
-			eObjectType.RecurvedBow,
+            eObjectType.ThrustWeapon,
+            eObjectType.CrushingWeapon,
+            eObjectType.SlashingWeapon,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.TwoHandedWeapon,
+            eObjectType.Longbow,
+            eObjectType.Flexible,
+            eObjectType.PolearmWeapon,
+            eObjectType.FistWraps, //Maulers
+			eObjectType.MaulerStaff,//Maulers
 			eObjectType.Instrument,
-			eObjectType.FistWraps,//Maulers
+            eObjectType.Crossbow,
+            eObjectType.Hammer,
+            eObjectType.Axe,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.Spear,
+            eObjectType.CompositeBow ,
+            eObjectType.LeftAxe,
+            eObjectType.HandToHand,
+            eObjectType.FistWraps,//Maulers
+			eObjectType.MaulerStaff,//Maulers
+			eObjectType.Sword,
+            eObjectType.Blades,
+            eObjectType.Blunt,
+            eObjectType.Piercing,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.LargeWeapons,
+            eObjectType.CelticSpear,
+            eObjectType.Scythe,
+            eObjectType.RecurvedBow,
+            eObjectType.Instrument,
+            eObjectType.FistWraps,//Maulers
+			eObjectType.MaulerStaff,//Maulers
+            eObjectType.ThrustWeapon,
+            eObjectType.CrushingWeapon,
+            eObjectType.SlashingWeapon,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.TwoHandedWeapon,
+            eObjectType.Longbow,
+            eObjectType.Flexible,
+            eObjectType.PolearmWeapon,
+            eObjectType.FistWraps, //Maulers
+			eObjectType.MaulerStaff,//Maulers
+			eObjectType.Instrument,
+            eObjectType.Crossbow,
+            eObjectType.Hammer,
+            eObjectType.Axe,
+            eObjectType.Shield,
+            eObjectType.Staff,
+            eObjectType.Spear,
+            eObjectType.CompositeBow ,
+            eObjectType.LeftAxe,
+            eObjectType.HandToHand,
+            eObjectType.FistWraps,//Maulers
 			eObjectType.MaulerStaff,//Maulers
 		};
 
@@ -4421,7 +4601,6 @@ namespace DOL.GS
 			hPropertyToMagicPrefix.Add(eProperty.Skill_Fire, "Flameborn");
 			hPropertyToMagicPrefix.Add(eProperty.Skill_Flexible_Weapon, "Tensile");
 			hPropertyToMagicPrefix.Add(eProperty.Skill_Cold, "Iceborn");
-			hPropertyToMagicPrefix.Add(eProperty.Skill_Instruments, "Melodic");
 			hPropertyToMagicPrefix.Add(eProperty.Skill_Long_bows, "Winged");
 			hPropertyToMagicPrefix.Add(eProperty.Skill_Matter, "Earthsplitter");
 			hPropertyToMagicPrefix.Add(eProperty.Skill_Mind, "Dominating");
@@ -4468,7 +4647,6 @@ namespace DOL.GS
 			hPropertyToMagicPrefix.Add(eProperty.Skill_Blades, "Razored");
 			hPropertyToMagicPrefix.Add(eProperty.Skill_Blunt, "Crushing");
 			hPropertyToMagicPrefix.Add(eProperty.Skill_Piercing, "Lancenator");
-			hPropertyToMagicPrefix.Add(eProperty.Skill_Large_Weapon, "Sundering");
 			hPropertyToMagicPrefix.Add(eProperty.Skill_Mentalism, "Mindbinder");
 			hPropertyToMagicPrefix.Add(eProperty.Skill_Regrowth, "Forestbound");
 			hPropertyToMagicPrefix.Add(eProperty.Skill_Nurture, "Plantbound");
