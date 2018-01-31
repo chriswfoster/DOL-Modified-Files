@@ -28,7 +28,7 @@ namespace DOL.GS
             }
             if (values.Length >= 2)
             {
-                SayTo(player, string.Join(",", values));
+                SayTo(player, string.Join("],[", values));
                 for (var i = 0; i < values.Length; i++)
                 {
                     Specialization tempSpec = SkillBase.GetSpecialization(values[i]);

@@ -14,7 +14,58 @@ namespace DOL.GS.Spells
     //http://www.camelotherald.com/masterlevels/ma.php?ml=Sojourner
     //no shared timer
     #region Sojourner-1
-    //Gameplayer - MaxEncumbrance
+    [SpellHandlerAttribute("TravellingVaultKeeper")]
+    public class TravellingVaultKeeperSpellHandler : SpellHandler
+    {
+        private GameVaultKeeper vaultkeeper;
+        /// <summary>
+        /// Execute Acient Transmuter summon spell
+        /// </summary>
+        /// <param name="target"></param>
+        public override void FinishSpellCast(GameLiving target)
+        {
+            m_caster.Mana -= PowerCost(target);
+            base.FinishSpellCast(target);
+        }
+        public override void OnEffectStart(GameSpellEffect effect)
+        {
+            base.OnEffectStart(effect);
+            if (effect.Owner == null || !effect.Owner.IsAlive)
+                return;
+
+            vaultkeeper.AddToWorld();
+        }
+        public override int OnEffectExpires(GameSpellEffect effect, bool noMessages)
+        {
+            if (vaultkeeper != null) vaultkeeper.Delete();
+            return base.OnEffectExpires(effect, noMessages);
+        }
+        public TravellingVaultKeeperSpellHandler(GameLiving caster, Spell spell, SpellLine line)
+            : base(caster, spell, line)
+        {
+            if (caster is GamePlayer)
+            {
+                GamePlayer casterPlayer = caster as GamePlayer;
+                vaultkeeper = new GameVaultKeeper();
+                //Fill the object variables
+                vaultkeeper.X = casterPlayer.X + Util.Random(20, 40) - Util.Random(20, 40);
+                vaultkeeper.Y = casterPlayer.Y + Util.Random(20, 40) - Util.Random(20, 40);
+                vaultkeeper.Z = casterPlayer.Z;
+                vaultkeeper.CurrentRegion = casterPlayer.CurrentRegion;
+                vaultkeeper.Heading = (ushort)((casterPlayer.Heading + 2048) % 4096);
+                vaultkeeper.Level = 1;
+                vaultkeeper.Realm = casterPlayer.Realm;
+                vaultkeeper.Name = "Travelling Vault Keeper";
+                vaultkeeper.Model = 947;
+                vaultkeeper.CurrentSpeed = 0;
+                vaultkeeper.MaxSpeedBase = 0;
+                vaultkeeper.GuildName = "";
+                vaultkeeper.Size = 50;
+                vaultkeeper.Flags |= GameNPC.eFlags.PEACE;
+                
+            }
+        }
+    }
     #endregion
 
     //ML2 Unending Breath - already handled in another area
