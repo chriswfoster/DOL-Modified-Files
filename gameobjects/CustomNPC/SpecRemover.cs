@@ -15,8 +15,10 @@ using System.Reflection;
 
 namespace DOL.GS
 {
+    
     public class SpecRemover : GameNPC
     {
+        
         public override bool Interact(GamePlayer player)
         {
             string tmpStr = player.Client.Account.Characters[player.Client.ActiveCharIndex].SerializedSpecs.Replace(@";", ",").Replace(@"|", ",");
@@ -28,41 +30,19 @@ namespace DOL.GS
             }
             if (values.Length >= 2)
             {
-                SayTo(player, string.Join("],[", values));
-                for (var i = 0; i < values.Length; i++)
+               
+                List<string> specList = new List<string>();
+                    for (var i = 0; i < values.Length; i++)
                 {
-                    Specialization tempSpec = SkillBase.GetSpecialization(values[i]);
-                    i++;
-
-                    if (tempSpec != null)
+                    if (i % 2 == 0)
                     {
-                        if (tempSpec.AllowSave)
-                        {
-                            int level;
-                            level = player.Level;
-                           // if (player.HasSpecialization(tempSpec.KeyName))
-                           // {
-                          //      player.GetSpecializationByName(tempSpec.KeyName).Level = level;
-
-                         //   }
-                         //   else
-                          //  {
-                           //     tempSpec.Level = level;
-                           //     player.AddSpecialization(tempSpec);
-                           // }
-
-
-                        }
-                        //player.Out.SendUpdatePoints();
-                       // player.Out.SendUpdatePlayerSkills();
-                       // player.SaveIntoDatabase();
-                       // player.UpdatePlayerStatus();
-                        SayTo(player, "Done with whatever.");
+                        specList.Add(values[i]);
                     }
-
                 }
+                SayTo(player, "Which spec would you like to remove? [" + string.Join("], [", specList) + "]");
             } return false;
         }
+        string SELECTED_SPEC;
         public override bool WhisperReceive(GameLiving source, string text)
 
         {
@@ -75,8 +55,34 @@ namespace DOL.GS
             if (text.Length > 1)
             {
 
+                Specialization tempSpec = SkillBase.GetSpecialization(text);
+            
+                player.Out.SendCustomDialog("CAUTION: All spec removals final. Do you want to remove " + tempSpec.KeyName + "?", new CustomDialogResponse(PlayerResponse));
+                SELECTED_SPEC = tempSpec.KeyName;
+                
             }
             return false;
+
+            
+        }
+        private void PlayerResponse(GamePlayer player, byte response)
+        {
+
+            if (response != 0x01) return; //declined
+
+          
+           
+            SayTo(player, "Respeccing " + SELECTED_SPEC+ " for you now...");
+            player.RemoveSpecialization(SELECTED_SPEC);
+            SELECTED_SPEC = "";
+            player.Out.SendUpdatePlayer();
+            player.Out.SendUpdatePoints();
+            player.Out.SendUpdatePlayerSkills();
+            player.SaveIntoDatabase();
+            player.UpdatePlayerStatus();
+            SELECTED_SPEC = "";
+
+
         }
     }
 }
