@@ -69,75 +69,88 @@ namespace DOL.GS
             if (source is GamePlayer)
             {
                 GamePlayer player = (GamePlayer)source;
-
-               if (item.Item_Type == 444 && item.Name == "Plate")
+                string tmpStr = player.Client.Account.Characters[player.Client.ActiveCharIndex].SerializedSpecs.Replace(@";", ",").Replace(@"|", ",");
+                string[] values = { };
+                foreach (string spec in tmpStr.SplitCSV())
                 {
-                    player.AddAbility(SkillBase.GetAbility("AlbArmor", 5));
-                    player.AddAbility(SkillBase.GetAbility("HibArmor", 4));
-                    player.AddAbility(SkillBase.GetAbility("MidArmor", 4));
-                    player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
-                    player.Out.SendUpdatePlayer();
-                    player.Out.SendUpdatePoints();
-                    player.Out.SendUpdatePlayerSkills();
-                    player.SaveIntoDatabase();
-                    player.UpdatePlayerStatus();
-                    player.Inventory.RemoveCountFromStack(item, 1);
+                values = spec.Split(',');
                 }
-                else if (item.Item_Type == 444 && item.Name == "Chain")
+                List<string> specList = new List<string>();
+                for (var i = 0; i < values.Length; i++)
                 {
-                    player.AddAbility(SkillBase.GetAbility("AlbArmor", 4));
-                    player.AddAbility(SkillBase.GetAbility("HibArmor", 4));
-                    player.AddAbility(SkillBase.GetAbility("MidArmor", 4));
-                    player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
-                    player.Out.SendUpdatePlayer();
-                    player.Out.SendUpdatePoints();
-                    player.Out.SendUpdatePlayerSkills();
-                    player.SaveIntoDatabase();
-                    player.UpdatePlayerStatus();
-                    player.Inventory.RemoveCountFromStack(item, 1);
-                }
-                else if (item.Item_Type == 444 && item.Name == "Studded / Reinforced")
-                {
-                    player.AddAbility(SkillBase.GetAbility("AlbArmor", 3));
-                    player.AddAbility(SkillBase.GetAbility("HibArmor", 3));
-                    player.AddAbility(SkillBase.GetAbility("MidArmor", 3));
-                    player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
-                    player.Out.SendUpdatePlayer();
-                    player.Out.SendUpdatePoints();
-                    player.Out.SendUpdatePlayerSkills();
-                    player.SaveIntoDatabase();
-                    player.UpdatePlayerStatus();
-                    player.Inventory.RemoveCountFromStack(item, 1);
-                }
-                else if (item.Item_Type == 444 && item.Name == "Leather")
-                {
-                    player.AddAbility(SkillBase.GetAbility("AlbArmor", 2));
-                    player.AddAbility(SkillBase.GetAbility("HibArmor", 2));
-                    player.AddAbility(SkillBase.GetAbility("MidArmor", 2));
-                    player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
-                    player.Out.SendUpdatePlayer();
-                    player.Out.SendUpdatePoints();
-                    player.Out.SendUpdatePlayerSkills();
-                    player.SaveIntoDatabase();
-                    player.UpdatePlayerStatus();
-                    player.Inventory.RemoveCountFromStack(item, 1);
-                }
-                else if (item.Item_Type == 666 && isItemInMerchantList(item))
-                {
-                    player.AddAbility(SkillBase.GetAbility(item.Name));
-                    player.AddSpecialization(SkillBase.GetSpecialization(item.Description));
-                    player.Out.SendUpdatePlayer();
-                    player.Out.SendUpdatePoints();
-                    player.Out.SendUpdatePlayerSkills();
-                    player.SaveIntoDatabase();
-                    player.UpdatePlayerStatus();
-                    player.Inventory.RemoveCountFromStack(item, 1);
-
+                    if (i % 2 == 0)
+                    {
+                        specList.Add(values[i]);
+                    }
                 }
 
+                if (values.Length < 20)
+                {
+                    if (item.Item_Type == 444 && item.Name == "Plate")
+                    {
+                        player.AddAbility(SkillBase.GetAbility("AlbArmor", 5));
+                        player.AddAbility(SkillBase.GetAbility("HibArmor", 4));
+                        player.AddAbility(SkillBase.GetAbility("MidArmor", 4));
+                        player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
+                        player.Out.SendUpdatePlayer();
+                        player.Out.SendUpdatePoints();
+                        player.Out.SendUpdatePlayerSkills();
+                        player.SaveIntoDatabase();
+                        player.UpdatePlayerStatus();
+                        player.Inventory.RemoveCountFromStack(item, 1);
+                    }
+                    else if (item.Item_Type == 444 && item.Name == "Chain")
+                    {
+                        player.AddAbility(SkillBase.GetAbility("AlbArmor", 4));
+                        player.AddAbility(SkillBase.GetAbility("HibArmor", 4));
+                        player.AddAbility(SkillBase.GetAbility("MidArmor", 4));
+                        player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
+                        player.Out.SendUpdatePlayer();
+                        player.Out.SendUpdatePoints();
+                        player.Out.SendUpdatePlayerSkills();
+                        player.SaveIntoDatabase();
+                        player.UpdatePlayerStatus();
+                        player.Inventory.RemoveCountFromStack(item, 1);
+                    }
+                    else if (item.Item_Type == 444 && item.Name == "Studded / Reinforced")
+                    {
+                        player.AddAbility(SkillBase.GetAbility("AlbArmor", 3));
+                        player.AddAbility(SkillBase.GetAbility("HibArmor", 3));
+                        player.AddAbility(SkillBase.GetAbility("MidArmor", 3));
+                        player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
+                        player.Out.SendUpdatePlayer();
+                        player.Out.SendUpdatePoints();
+                        player.Out.SendUpdatePlayerSkills();
+                        player.SaveIntoDatabase();
+                        player.UpdatePlayerStatus();
+                        player.Inventory.RemoveCountFromStack(item, 1);
+                    }
+                    else if (item.Item_Type == 444 && item.Name == "Leather")
+                    {
+                        player.AddAbility(SkillBase.GetAbility("AlbArmor", 2));
+                        player.AddAbility(SkillBase.GetAbility("HibArmor", 2));
+                        player.AddAbility(SkillBase.GetAbility("MidArmor", 2));
+                        player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
+                        player.Out.SendUpdatePlayer();
+                        player.Out.SendUpdatePoints();
+                        player.Out.SendUpdatePlayerSkills();
+                        player.SaveIntoDatabase();
+                        player.UpdatePlayerStatus();
+                        player.Inventory.RemoveCountFromStack(item, 1);
+                    }
+                    else if (item.Item_Type == 666 && isItemInMerchantList(item))
+                    {
+                        player.AddAbility(SkillBase.GetAbility(item.Name));
+                        player.AddSpecialization(SkillBase.GetSpecialization(item.Description));
+                        player.Out.SendUpdatePlayer();
+                        player.Out.SendUpdatePoints();
+                        player.Out.SendUpdatePlayerSkills();
+                        player.SaveIntoDatabase();
+                        player.UpdatePlayerStatus();
+                        player.Inventory.RemoveCountFromStack(item, 1);
 
-
-                else if (item.Item_Type == 888 && isItemInMerchantList(item))
+                    }
+                    else if (item.Item_Type == 888 && isItemInMerchantList(item))
                     {
                         player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
                         player.Out.SendUpdatePlayer();
@@ -148,9 +161,19 @@ namespace DOL.GS
                         player.Inventory.RemoveCountFromStack(item, 1);
 
                     }
+                    return false;
+
+                }else if (values.Length > 19)
+                {
+                    SayTo(player, "You can only have 10 specs in your specialization list! Go remove some to add this one. Choose wisely!");
+                }
 
 
-                return false;
+
+
+
+
+
             }
             return false;
         }
@@ -176,7 +199,7 @@ namespace DOL.GS
             else
             {
       
-                SayTo(player, "Hello traveler, purchase an ability scroll, and hand it to me. I'll try to teach you the ability. I'm learning new things every day - myself.");
+                SayTo(player, "Hello traveler, purchase an ability scroll, and hand it to me. I'll try to teach you the ability. I'm learning new things every day - myself. MAX SPEC LIMIT: 10");
             
               
             }
