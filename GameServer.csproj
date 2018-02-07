@@ -2132,6 +2132,7 @@
     <Compile Include="spells\Artifacts\Traldor.cs" />
     <Compile Include="spells\AstralPetSummon.cs" />
     <Compile Include="spells\Bainshee\BainsheePulseDmgSpellHandler.cs" />
+    <Compile Include="spells\DoTHealHandler.cs" />
     <Compile Include="spells\negative\BeFriendSpellHandler.cs" />
     <Compile Include="spells\negative\FearBrain.cs" />
     <Compile Include="spells\negative\FearSpellHandler.cs" />
@@ -2184,6 +2185,7 @@
     <Compile Include="spells\Necromancer\PowerTransfer.cs" />
     <Compile Include="spells\Necromancer\PowerDrain.cs" />
     <Compile Include="spells\NightShade\NightshadeNukeSpellhandler.cs" />
+    <Compile Include="spells\OmniHOT.cs" />
     <Compile Include="spells\RvRSicknessSpellHandler.cs" />
     <Compile Include="spells\SpellHelpers\SpellHelper.cs" />
     <Compile Include="spells\SpellHelpers\SpellMessagesHelper.cs" />
