@@ -92,6 +92,8 @@ namespace DOL.GS
                         player.AddAbility(SkillBase.GetAbility("HibArmor", 4));
                         player.AddAbility(SkillBase.GetAbility("MidArmor", 4));
                         player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
+                        player.AddSpecialization(SkillBase.GetSpecialization(item.Description));
+                        player.AddSpecialization(SkillBase.GetSpecialization(item.ClassType));
                         player.Out.SendUpdatePlayer();
                         player.Out.SendUpdatePoints();
                         player.Out.SendUpdatePlayerSkills();
