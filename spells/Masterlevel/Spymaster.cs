@@ -111,7 +111,7 @@ namespace DOL.GS.Spells
 
             decoy.Name = caster.Name;
             decoy.Model = caster.Model;
-            TemplateId = "52de1c2c-3621-4d80-b04b-dd253a6a99bf";
+            TemplateId = "decoycolorscheme";
            
             GameNpcInventoryTemplate load = new GameNpcInventoryTemplate();
             if (load.LoadFromDatabase(TemplateId))
