@@ -75,10 +75,22 @@ namespace DOL.GS
                 {
                 values = spec.Split(',');
                 }
+                bool hasPlate = false;
+                bool hasChain = false;
                 List<string> specList = new List<string>();
                 for (var i = 0; i < values.Length; i++)
                 {
-                    if (i % 2 == 0)
+                    if (i % 2 == 0 && values[i] == "Plate")
+                    {
+                        hasPlate = true;
+                        specList.Add(values[i]);
+                    }
+                    else if (i % 2 == 0 && values[i] == "Chain")
+                    {
+                        hasChain = true;
+                        specList.Add(values[i]);
+                    }
+                    else if (i % 2 == 0 && values[i] != "Chain" && values[i] != "Plate")
                     {
                         specList.Add(values[i]);
                     }
@@ -86,14 +98,12 @@ namespace DOL.GS
 
                 if (values.Length < 20)
                 {
-                    if (item.Item_Type == 444 && item.Name == "Plate")
+                    if (values.Length < 13 && item.Item_Type == 444 && item.Name == "Plate")
                     {
                         player.AddAbility(SkillBase.GetAbility("AlbArmor", 5));
                         player.AddAbility(SkillBase.GetAbility("HibArmor", 4));
                         player.AddAbility(SkillBase.GetAbility("MidArmor", 4));
                         player.AddSpecialization(SkillBase.GetSpecialization(item.Name));
-                        player.AddSpecialization(SkillBase.GetSpecialization(item.Description));
-                        player.AddSpecialization(SkillBase.GetSpecialization(item.ClassType));
                         player.Out.SendUpdatePlayer();
                         player.Out.SendUpdatePoints();
                         player.Out.SendUpdatePlayerSkills();
@@ -101,7 +111,11 @@ namespace DOL.GS
                         player.UpdatePlayerStatus();
                         player.Inventory.RemoveCountFromStack(item, 1);
                     }
-                    else if (item.Item_Type == 444 && item.Name == "Chain")
+                    else if (values.Length > 13 && item.Item_Type == 444 && item.Name == "Plate")
+                    {
+                        SayTo(player, "Plate occupies 3 specs, remove some specs first!");
+                    }
+                    else if (values.Length < 15 && item.Item_Type == 444 && item.Name == "Chain")
                     {
                         player.AddAbility(SkillBase.GetAbility("AlbArmor", 4));
                         player.AddAbility(SkillBase.GetAbility("HibArmor", 4));
@@ -113,6 +127,10 @@ namespace DOL.GS
                         player.SaveIntoDatabase();
                         player.UpdatePlayerStatus();
                         player.Inventory.RemoveCountFromStack(item, 1);
+                    }
+                    else if (values.Length > 14 && item.Item_Type == 444 && item.Name == "Chain")
+                    {
+                        SayTo(player, "Chain and studded occupy 2 specs, remove some specs first!");
                     }
                     else if (item.Item_Type == 444 && item.Name == "Studded / Reinforced")
                     {
