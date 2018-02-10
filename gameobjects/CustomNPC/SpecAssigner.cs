@@ -111,7 +111,7 @@ namespace DOL.GS
                         player.UpdatePlayerStatus();
                         player.Inventory.RemoveCountFromStack(item, 1);
                     }
-                    else if (values.Length > 16 && item.Item_Type == 444 && item.Name == "Plate")
+                    else if (values.Length > 14 && item.Item_Type == 444 && item.Name == "Plate")
                     {
                         SayTo(player, "Plate occupies 3 specs, remove some specs first!");
                     }
@@ -128,7 +128,7 @@ namespace DOL.GS
                         player.UpdatePlayerStatus();
                         player.Inventory.RemoveCountFromStack(item, 1);
                     }
-                    else if (values.Length > 18 && item.Item_Type == 444 && item.Name == "Chain")
+                    else if (values.Length > 16 && item.Item_Type == 444 && item.Name == "Chain")
                     {
                         SayTo(player, "Chain and Studded occupy 2 specs, remove some specs first!");
                     }
@@ -145,7 +145,7 @@ namespace DOL.GS
                         player.UpdatePlayerStatus();
                         player.Inventory.RemoveCountFromStack(item, 1);
                     }
-                    else if (values.Length > 18 && item.Item_Type == 444 && item.Name == "Studded")
+                    else if (values.Length > 16 && item.Item_Type == 444 && item.Name == "Studded")
                     {
                         SayTo(player, "Chain and Studded occupy 2 specs, remove some specs first!");
                     }
