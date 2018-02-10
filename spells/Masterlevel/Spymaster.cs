@@ -91,38 +91,28 @@ namespace DOL.GS.Spells
                 return;
             }
         }
+       
         public DecoySpellHandler(GameLiving caster, Spell spell, SpellLine line)
             : base(caster, spell, line)
+
         {
+            
             Random m_rnd = new Random();
             decoy = new GameDecoy();
             //Fill the object variables
             decoy.CurrentRegion = caster.CurrentRegion;
             decoy.Heading = (ushort)((caster.Heading + 2048) % 4096);
             decoy.Level = 50;
-            decoy.Realm = caster.Realm;
+            decoy.Realm = 0;
             decoy.X = caster.X;
             decoy.Y = caster.Y;
             decoy.Z = caster.Z;
             string TemplateId = "";
-            switch (caster.Realm)
-            {
-                case eRealm.Albion:
-                    decoy.Name = "Avalonian Unicorn Knight";
-                    decoy.Model = (ushort)m_rnd.Next(61, 68);
-                    TemplateId = "e3ead77b-22a7-4b7d-a415-92a29295dcf7";
-                    break;
-                case eRealm.Midgard:
-                    decoy.Name = "Kobold Elding Herra";
-                    decoy.Model = (ushort)m_rnd.Next(169, 184);
-                    TemplateId = "ee137bff-e83d-4423-8305-8defa2cbcd7a";
-                    break;
-                case eRealm.Hibernia:
-                    decoy.Name = "Elf Gilded Spear";
-                    decoy.Model = (ushort)m_rnd.Next(334, 349);
-                    TemplateId = "a4c798a2-186a-4bda-99ff-ccef228cb745";
-                    break;
-            }
+
+            decoy.Name = caster.Name;
+            decoy.Model = caster.Model;
+            TemplateId = "52de1c2c-3621-4d80-b04b-dd253a6a99bf";
+           
             GameNpcInventoryTemplate load = new GameNpcInventoryTemplate();
             if (load.LoadFromDatabase(TemplateId))
             {
