@@ -35,7 +35,7 @@ namespace DOL.GS.PlayerClass
             m_specializationMultiplier = 100;
             m_primaryStat = eStat.STR;
             m_secondaryStat = eStat.DEX;
-            m_tertiaryStat = eStat.CON;
+            m_tertiaryStat = eStat.INT;
             m_manaStat = eStat.INT;
             m_wsbase = 440;
 			m_baseHP = 880;
