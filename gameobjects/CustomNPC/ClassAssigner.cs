@@ -95,7 +95,7 @@ namespace DOL.GS
 
             if (text.ToLower() == "fighter")
             {
-                player.Out.SendMessage("Great, a fighter, whatever. Off you go!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage("Great choice fighter! Off you go!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
                 SetClass(player, 14);
                 player.Client.Account.Characters[player.Client.ActiveCharIndex].BindRegion = 1;
                 player.Client.Account.Characters[player.Client.ActiveCharIndex].BindXpos = 561654;
