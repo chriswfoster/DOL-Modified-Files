@@ -90,6 +90,11 @@ namespace DOL.GS
                         hasChain = 4;
                         specList.Add(values[i]);
                     }
+                    else if (i % 2 == 0 && values[i] == "Studded / Reinforced")
+                    {
+                        hasChain = 4;
+                        specList.Add(values[i]);
+                    }
                     else if (i % 2 == 0 && values[i] != "Chain" && values[i] != "Plate")
                     {
                         specList.Add(values[i]);
@@ -145,7 +150,7 @@ namespace DOL.GS
                         player.UpdatePlayerStatus();
                         player.Inventory.RemoveCountFromStack(item, 1);
                     }
-                    else if (values.Length > 16 && item.Item_Type == 444 && item.Name == "Studded")
+                    else if (values.Length > 16 && item.Item_Type == 444 && item.Name == "Studded / Reinforced")
                     {
                         SayTo(player, "Chain and Studded occupy 2 specs, remove some specs first!");
                     }
