@@ -44,7 +44,7 @@ namespace DOL.GS
             {
               
                 player.Out.SendMessage(String.Format("Hello, welcome to Deity Node! This info console should get you the help you need."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format("From here, you have a handful of options. You can jump to [getting started], read about the 3 main [classes], learn about [speccing], [rules], or find a way to [contact] an admin for support."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format("From here, you have a handful of options. You can jump to [getting started], learn about [speccing], [rules], or find a way to [contact] an admin for support."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
             }
             return false;
         }
@@ -66,7 +66,7 @@ namespace DOL.GS
             if (text.ToLower() == "beginning")
             {
                 player.Out.SendMessage(String.Format("Hello, welcome to Deity Node! This info console should get you the help you need."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format("From here, you have a handful of options. You can jump to [getting started], read about the 3 main [classes], learn about [speccing], [rules], or find a way to [contact] an admin for support."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format("From here, you have a handful of options. You can jump to [getting started], learn about [speccing], [rules], or find a way to [contact] an admin for support."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
             }
             if (text.ToLower() == "rules")
             {
@@ -75,8 +75,8 @@ namespace DOL.GS
             }
             if (text.ToLower() == "getting started")
             {
-                player.Out.SendMessage(String.Format("Well, first this is a PvP server, that's probably PvE heavy. There is NO INSTA 50. And there's only 3 real classes on this server."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format("Aurulite should drop from every mob on this server. It's used to purchase a lot of content available in starter areas (primarily specs and armor). There is probably some RNG item drops that you'll encounter. XP rate is set to x3"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format("Well, first this is a PvP server, that's probably PvE heavy. There is NO INSTA 50. And there's only 1 real class on this server."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format("Aurulite should drop from every mob on this server. It's used to purchase a lot of content available in starter areas (primarily specs and armor). There is probably some RNG item drops that you'll encounter. XP rate is set to x7 I think."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
                 player.Out.SendMessage(String.Format("Return to [beginning] of info console."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
             }
             if (text.ToLower() == "contact")
@@ -87,30 +87,11 @@ namespace DOL.GS
             }
             if (text.ToLower() == "speccing")
             {
-                player.Out.SendMessage(String.Format("WARNING: Know that trying to cram ~10 specs onto your toon, can cause you to miss out on higher level abilities, though shouldn't break your toon."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format("Speccing is simple on Deity Node. Visit one of the gnomes that teach your desired spec, purchase the spec with aurulite, drop the spec on the gnome. There is an Ultimate Trainer that will level all your specs up to par with 1 right click interact. You may visit him as many times as you wish, currently 100% free. Spec removal/respecs will be available soon, if not already so."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format("Currently, you have access to 10 specs. -3 if you spec in plate, -2 if you spec in chain. So you can have 7 specs total if plate is included in the mix."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format("Speccing is simple on Deity Node. Visit one of the gnomes that teach your desired spec, purchase the spec with aurulite, drop the spec on the gnome. There is an Ultimate Trainer that will level all your specs up to par with 1 right click interact. You may visit him as many times as you wish, currently 100% free. Spec removal is simple, just click the spec you wish to remove. No refunds :)"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
                 player.Out.SendMessage(String.Format("Return to [beginning] of info console."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
             }
-            if (text.ToLower() == "classes")
-            {
-                player.Out.SendMessage(String.Format("This server has 3 classes. There's three classes, which would you like to hear about? [Fighter], [mage], or [rogue]."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format("Return to [beginning] of info console."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-            }
-            if (text.ToLower() == "rogue")
-            {
-                player.Out.SendMessage(String.Format("The Rogue class has access to stealth. Currently, the only class with this ability. They also have high evasion, Critical Strike spec, and they still get access to all the weapons. The highest armor a rogue can wear is studded. They will start with thrust, critical strike, and stealth spec."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format("Return to [beginning] of info console or back to [classes]?"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-            }
-            if (text.ToLower() == "fighter")
-            {
-                player.Out.SendMessage(String.Format("The Fighter class is any basic fighting class. Yeah, they still have access to spells, but they have special access to the highest armor tiers, special tanking abilities, and their stats focus on Strength based weapons."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format("Return to [beginning] of info console or back to [classes]?"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-            }
-            if (text.ToLower() == "mage")
-            {
-                player.Out.SendMessage(String.Format("The mage class is your starter caster class. It's a class where you want to focus your career on magic, but you still have access to melee weapons and specs. The Mage's highest armor ability is studded, same as the rogue. All mages primary mana/power stat is Intelligence. And of course, the mage is the only class of the 3 that has access to quick cast abilities."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format("Return to [beginning] of info console or back to [classes]?"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-            }
+            
             return false;
 
 
