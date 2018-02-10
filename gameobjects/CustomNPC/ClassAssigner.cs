@@ -72,10 +72,9 @@ namespace DOL.GS
             }
             else
             {
-                SayTo(player, "Quickly now, before the other guards arrive! Prisoner, you want out right? I can release you into this world, but you have to make something of yourself. You have 3 paths to choose.");
-                SayTo(player, "Your first choice is to become a [fighter]. You'll still have access to a path of magic, but your primary and secondary stats will be Strength and Dexterity.");
-                SayTo(player, "You could also choose a path of magic, and become a [mage]? You'll still have access to melee styles, however your primary and secondary stats will be Intelligence and Dexterity. You will not have access to plate, chain, or scale armor either... It slows the hand at casting magic.");
-                SayTo(player, "And of course, you could become some sort of [rogue]. Rogues don't have access to plate, chain, or scale either. However, they are the only class with stealth, Critical Strike attacks (spec), all weapons, magic, and some high evasion tactics. Primary and secondary stats are Dexterity and Strength"); 
+                SayTo(player, "Prisoner! Quickly now, before the other guards arrive! I can release you into this world, but you have to make something of yourself.");
+                SayTo(player, "Are you ready to become a [fighter]? This is your only way out.");
+                
             }
             return false;
         }
