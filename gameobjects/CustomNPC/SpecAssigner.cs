@@ -75,19 +75,19 @@ namespace DOL.GS
                 {
                 values = spec.Split(',');
                 }
-                bool hasPlate = false;
-                bool hasChain = false;
+                int hasPlate = 0;
+                int hasChain = 0;
                 List<string> specList = new List<string>();
                 for (var i = 0; i < values.Length; i++)
                 {
                     if (i % 2 == 0 && values[i] == "Plate")
                     {
-                        hasPlate = true;
+                        hasPlate = 6;
                         specList.Add(values[i]);
                     }
                     else if (i % 2 == 0 && values[i] == "Chain")
                     {
-                        hasChain = true;
+                        hasChain = 4;
                         specList.Add(values[i]);
                     }
                     else if (i % 2 == 0 && values[i] != "Chain" && values[i] != "Plate")
@@ -96,9 +96,9 @@ namespace DOL.GS
                     }
                 }
 
-                if (values.Length < 20)
+                if (values.Length < (20 - hasPlate - hasChain))
                 {
-                    if (values.Length < 13 && item.Item_Type == 444 && item.Name == "Plate")
+                    if (values.Length < 15 && item.Item_Type == 444 && item.Name == "Plate")
                     {
                         player.AddAbility(SkillBase.GetAbility("AlbArmor", 5));
                         player.AddAbility(SkillBase.GetAbility("HibArmor", 4));
@@ -111,11 +111,11 @@ namespace DOL.GS
                         player.UpdatePlayerStatus();
                         player.Inventory.RemoveCountFromStack(item, 1);
                     }
-                    else if (values.Length > 13 && item.Item_Type == 444 && item.Name == "Plate")
+                    else if (values.Length > 16 && item.Item_Type == 444 && item.Name == "Plate")
                     {
                         SayTo(player, "Plate occupies 3 specs, remove some specs first!");
                     }
-                    else if (values.Length < 15 && item.Item_Type == 444 && item.Name == "Chain")
+                    else if (values.Length < 17 && item.Item_Type == 444 && item.Name == "Chain")
                     {
                         player.AddAbility(SkillBase.GetAbility("AlbArmor", 4));
                         player.AddAbility(SkillBase.GetAbility("HibArmor", 4));
@@ -128,11 +128,11 @@ namespace DOL.GS
                         player.UpdatePlayerStatus();
                         player.Inventory.RemoveCountFromStack(item, 1);
                     }
-                    else if (values.Length > 14 && item.Item_Type == 444 && item.Name == "Chain")
+                    else if (values.Length > 18 && item.Item_Type == 444 && item.Name == "Chain")
                     {
-                        SayTo(player, "Chain and studded occupy 2 specs, remove some specs first!");
+                        SayTo(player, "Chain and Studded occupy 2 specs, remove some specs first!");
                     }
-                    else if (item.Item_Type == 444 && item.Name == "Studded / Reinforced")
+                    else if (values.Length < 17 && item.Item_Type == 444 && item.Name == "Studded / Reinforced")
                     {
                         player.AddAbility(SkillBase.GetAbility("AlbArmor", 3));
                         player.AddAbility(SkillBase.GetAbility("HibArmor", 3));
@@ -144,6 +144,10 @@ namespace DOL.GS
                         player.SaveIntoDatabase();
                         player.UpdatePlayerStatus();
                         player.Inventory.RemoveCountFromStack(item, 1);
+                    }
+                    else if (values.Length > 18 && item.Item_Type == 444 && item.Name == "Studded")
+                    {
+                        SayTo(player, "Chain and Studded occupy 2 specs, remove some specs first!");
                     }
                     else if (item.Item_Type == 444 && item.Name == "Leather")
                     {
@@ -183,7 +187,7 @@ namespace DOL.GS
                     }
                     return false;
 
-                }else if (values.Length > 19)
+                }else if (values.Length > (19 - hasPlate - hasChain))
                 {
                     SayTo(player, "You can only have 10 specs in your specialization list! Go remove some to add this one. Choose wisely!");
                 }
