@@ -53,10 +53,16 @@ namespace DOL.GS.PlayerClass
 			return HasAdvancedFromBaseClass() ? base.GetTitle(player, level) : base.GetTitle(player, 0);
 		}
 
-		public override eClassType ClassType
-		{
-			get { return eClassType.PureTank; }
-		}
+
+        public override eClassType ClassType
+        {
+            get { return eClassType.ListCaster; }
+        }
+        
+        //public override eClassType ClassType
+        //{
+        //	get { return eClassType.PureTank; }
+        //}
 
         public override IList<string> GetAutotrainableSkills()
         {
