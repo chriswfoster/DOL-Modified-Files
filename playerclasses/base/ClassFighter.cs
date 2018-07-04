@@ -27,15 +27,15 @@ namespace DOL.GS.PlayerClass
 	[CharacterClassAttribute((int)eCharacterClass.Fighter, "Fighter", "Fighter")]
 	public class ClassFighter : CharacterClassBase
 	{
-        private static readonly string[] AutotrainableSkills = new[] { Specs.Slash, Specs.Shields, Specs.Dual_Wield, Specs.Thrust, Specs.Crush, Specs.Two_Handed, Specs.Staff, Specs.HandToHand, Specs.Left_Axe, Specs.Axe, Specs.Spear, Specs.Stealth, Specs.Sword, Specs.Polearms, Specs.Hammer, Specs.Instruments, Specs.Chants, Specs.Critical_Strike, Specs.Flexible, Specs.Scythe, Specs.Archery, Specs.Parry, Specs.Savagery, Specs.Stealth, Specs.OdinsWill, Specs.Battlesongs, Specs.Augmentation, Specs.BoneArmy, "Bone Guardians", Specs.Chants, "Way of the Sun", Specs.Creeping_Path, "Plate", "Studded / Reinforced" };
+        private static readonly string[] AutotrainableSkills = new[] { Specs.Axe, Specs.Sword, Specs.Polearms, Specs.Hammer };
         public ClassFighter()
 			: base()
 		{
             m_profession = "PlayerClass.Profession.HouseofThor";
             m_specializationMultiplier = 100;
             m_primaryStat = eStat.STR;
-            m_secondaryStat = eStat.DEX;
-            m_tertiaryStat = eStat.INT;
+            m_secondaryStat = eStat.CON;
+            m_tertiaryStat = eStat.DEX;
             m_manaStat = eStat.INT;
             m_wsbase = 440;
 			m_baseHP = 880;
@@ -54,15 +54,15 @@ namespace DOL.GS.PlayerClass
 		}
 
 
+       // public override eClassType ClassType
+       // {
+       //     get { return eClassType.ListCaster; }
+       // }
+        
         public override eClassType ClassType
         {
-            get { return eClassType.ListCaster; }
+       	get { return eClassType.PureTank; }
         }
-        
-        //public override eClassType ClassType
-        //{
-        //	get { return eClassType.PureTank; }
-        //}
 
         public override IList<string> GetAutotrainableSkills()
         {
@@ -78,9 +78,6 @@ namespace DOL.GS.PlayerClass
 		{
 			return true;
 		}
-        public override ushort MaxPulsingSpells
-        {
-            get { return 12; }
-        }
+      
     }
 }

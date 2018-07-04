@@ -43,8 +43,8 @@ namespace DOL.GS
             else
             {
               
-                player.Out.SendMessage(String.Format("Hello, welcome to Deity Node! This info console should get you the help you need."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format("From here, you have a handful of options. You can jump to [getting started], learn about [speccing], [rules], or find a way to [contact] an admin for support."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format("Hello, welcome to the server! This info console should get you the help you need."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format("From here, you have a handful of options. You can jump to [getting started], learn about [classes], [rules], or find a way to [contact] an admin for support."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
             }
             return false;
         }
@@ -75,20 +75,20 @@ namespace DOL.GS
             }
             if (text.ToLower() == "getting started")
             {
-                player.Out.SendMessage(String.Format("Well, first this is a PvP server, that's probably PvE heavy. There is NO INSTA 50. And there's only 1 real class on this server."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format("Aurulite should drop from every mob on this server. It's used to purchase a lot of content available in starter areas (primarily specs and armor). There is probably some RNG item drops that you'll encounter. XP rate is set to x7 I think."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format("Well, first this is a PvP server, that's probably PvE heavy. There is NO INSTA 50. And there will ultimately be 7+ primary classes on this server."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format("Aurulite should drop from most mobs on this server. It's used to purchase a lot of content available in starter areas (primarily weapons and armor). There is probably some RNG item drops that you'll encounter. XP rate is set to x7 I think."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
                 player.Out.SendMessage(String.Format("Return to [beginning] of info console."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
             }
             if (text.ToLower() == "contact")
             {
-                player.Out.SendMessage(String.Format("Hey guys, never hesitate to reach out to me if you need help. If your character is bugged, you're stuck, or you have some ideas... "), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format("Hey, never hesitate to reach out to me if you need help. If your character is bugged, you're stuck, or you have some ideas... "), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
                 player.Out.SendMessage(String.Format("You can email me at chriswfoster@gmail.com or join our discord at https://discord.gg/TCkYBVx."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
                 player.Out.SendMessage(String.Format("Return to [beginning] of info console."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
             }
-            if (text.ToLower() == "speccing")
+            if (text.ToLower() == "classes")
             {
-                player.Out.SendMessage(String.Format("Currently, you have access to 10 specs. -3 if you spec in plate, -2 if you spec in chain. So you can have 7 specs total if plate is included in the mix."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format("Speccing is simple on Deity Node. Visit one of the gnomes that teach your desired spec, purchase the spec with aurulite, drop the spec on the gnome. There is an Ultimate Trainer that will level all your specs up to par with 1 right click interact. You may visit him as many times as you wish, currently 100% free. Spec removal is simple, just click the spec you wish to remove. No refunds :)"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format("Currently, I'm still working on the classes. There current available classes will be Summoner, Spellblade, Wizard, Stormlord, Guardians, Assassins, and Fighters."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format("There will be 3+ tiers to each class. They'll start out with a basic spell line, then it'll enhance as they quest or find real world objects that give them the specs they seek."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
                 player.Out.SendMessage(String.Format("Return to [beginning] of info console."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
             }
             
