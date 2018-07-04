@@ -887,6 +887,18 @@ namespace DOL.GS
 		Seer = 37,
 		Stalker = 54,
 		Viking = 35,
+        SpellbladeLight = 63,
+        SpellbladeDark = 64,
+        WizardLight = 65,
+        WizardDark = 66,
+        SummonerLight = 67,
+        SummonerDark = 68,
+        Assassin = 69,
+        StormlordLight = 70,
+        StormlordDark = 71,
+        
+
+
 
 		//alb classes
 		Armsman = 2,

@@ -22,30 +22,30 @@ using System.Collections.Generic;
 namespace DOL.GS.PlayerClass
 {
     /// <summary>
-    /// Albion Base Caster Class Mage
+    /// Albion Base Fighter Class
     /// </summary>
-    [CharacterClassAttribute((int)eCharacterClass.SummonerLight, "Summoner of Light", "Summoner of Light")]
-    public class SummonerLight : CharacterClassBase
+    [CharacterClassAttribute((int)eCharacterClass.Assassin, "Assassin", "Assassin")]
+    public class Assassin : CharacterClassBase
     {
-        // private static readonly string[] AutotrainableSkills = new[] {  };
-        public SummonerLight()
+        private static readonly string[] AutotrainableSkills = new[] { Specs.Axe, Specs.Sword, Specs.Polearms, Specs.Hammer };
+        public Assassin()
             : base()
         {
-            m_profession = "PlayerClass.Profession.PathofFocus";
-            m_specializationMultiplier = 40;
-            m_primaryStat = eStat.INT;
+            m_profession = "PlayerClass.Profession.HouseofThor";
+            m_specializationMultiplier = 100;
+            m_primaryStat = eStat.STR;
             m_secondaryStat = eStat.DEX;
-            m_tertiaryStat = eStat.CON;
-            m_wsbase = 300;
-            m_baseHP = 560;
+            m_tertiaryStat = eStat.QUI;
             m_manaStat = eStat.INT;
+            m_wsbase = 440;
+            m_baseHP = 880;
         }
 
 
-        // public override bool CanUseLefthandedWeapon
-        // {
-        //     get { return true; }
-        // }
+        public override bool CanUseLefthandedWeapon
+        {
+            get { return true; }
+        }
 
 
         public override string GetTitle(GamePlayer player, int level)
@@ -53,28 +53,31 @@ namespace DOL.GS.PlayerClass
             return HasAdvancedFromBaseClass() ? base.GetTitle(player, level) : base.GetTitle(player, 0);
         }
 
+
+        // public override eClassType ClassType
+        // {
+        //     get { return eClassType.ListCaster; }
+        // }
+
         public override eClassType ClassType
         {
-            get { return eClassType.ListCaster; }
+            get { return eClassType.PureTank; }
         }
 
-        //   public override IList<string> GetAutotrainableSkills()
-        // {
-        //   return AutotrainableSkills;
-        //}
+        public override IList<string> GetAutotrainableSkills()
+        {
+            return AutotrainableSkills;
+        }
 
         public override GameTrainer.eChampionTrainerType ChampionTrainerType()
         {
-            return GameTrainer.eChampionTrainerType.Mage;
+            return GameTrainer.eChampionTrainerType.Fighter;
         }
 
         public override bool HasAdvancedFromBaseClass()
         {
             return true;
         }
-        //public override ushort MaxPulsingSpells
-        // {
-        //    get { return 12; }
-        // }
+
     }
 }

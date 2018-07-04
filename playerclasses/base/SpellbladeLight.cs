@@ -24,7 +24,7 @@ namespace DOL.GS.PlayerClass
     /// <summary>
     /// Albion Base Fighter Class
     /// </summary>
-    [CharacterClassAttribute((int)eCharacterClass.Fighter, "Spellblade - Light", "Spellblade - Light")]
+    [CharacterClassAttribute((int)eCharacterClass.SpellbladeLight, "Spellblade - Light", "Spellblade - Light")]
     public class SpellbladeLight : CharacterClassBase
     {
         private static readonly string[] AutotrainableSkills = new[] { Specs.HandToHand, Specs.Axe, Specs.Sword, Specs.Thrust };

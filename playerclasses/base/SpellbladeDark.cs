@@ -24,15 +24,15 @@ namespace DOL.GS.PlayerClass
     /// <summary>
     /// Albion Base Fighter Class
     /// </summary>
-    [CharacterClassAttribute((int)eCharacterClass.Fighter, "Spellblade - Dark", "Spellblade - Dark")]
+    [CharacterClassAttribute((int)eCharacterClass.SpellbladeDark, "Spellblade of Dark", "Spellblade of Dark")]
     public class SpellbladeDark : CharacterClassBase
     {
-        private static readonly string[] AutotrainableSkills = new[] { Specs.Axe, Specs.Sword, Specs.Thrust };
+        private static readonly string[] AutotrainableSkills = new[] { Specs.HandToHand, Specs.Axe, Specs.Sword, Specs.Thrust };
         public SpellbladeDark()
             : base()
         {
             m_profession = "PlayerClass.Profession.HouseofThor";
-            m_specializationMultiplier = 100;
+            m_specializationMultiplier = 40;
             m_primaryStat = eStat.STR;
             m_secondaryStat = eStat.INT;
             m_tertiaryStat = eStat.DEX;

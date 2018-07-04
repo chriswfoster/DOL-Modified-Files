@@ -24,7 +24,7 @@ namespace DOL.GS.PlayerClass
     /// <summary>
     /// Albion Base Caster Class Mage
     /// </summary>
-    [CharacterClassAttribute((int)eCharacterClass.Mage, "Wizard of Dark", "Wizard of Dark")]
+    [CharacterClassAttribute((int)eCharacterClass.WizardDark, "Wizard of Dark", "Wizard of Dark")]
     public class WizardDark : CharacterClassBase
     {
         // private static readonly string[] AutotrainableSkills = new[] {  };
