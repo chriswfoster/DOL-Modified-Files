@@ -373,6 +373,7 @@
     <Compile Include="gameobjects\CharacterClasses\CharacterClassBase.cs" />
     <Compile Include="gameobjects\CharacterClasses\Midgard\CharacterClassBoneDancer.cs" />
     <Compile Include="gameobjects\CustomNPC\DPSDummy.cs" />
+    <Compile Include="gameobjects\CustomNPC\Custom Trainers\WarriorTrainer.cs" />
     <Compile Include="gameobjects\D2AccountStash.cs" />
     <Compile Include="gameobjects\CustomNPC\BuffMerchant.cs" />
     <Compile Include="gameobjects\CustomNPC\AllClassTrainer.cs" />
@@ -1101,6 +1102,15 @@
     <Compile Include="packets\Server\PacketProcessor.cs" />
     <Compile Include="packets\Utils\MiniDelveWriter.cs" />
     <Compile Include="playerclasses\albion\ClassMaulerAlb.cs" />
+    <Compile Include="playerclasses\base\Assassin.cs" />
+    <Compile Include="playerclasses\base\SpellbladeDark.cs" />
+    <Compile Include="playerclasses\base\SpellbladeLight.cs" />
+    <Compile Include="playerclasses\base\StormlordDark.cs" />
+    <Compile Include="playerclasses\base\StormlordLight.cs" />
+    <Compile Include="playerclasses\base\SummonerDark.cs" />
+    <Compile Include="playerclasses\base\SummonerLight.cs" />
+    <Compile Include="playerclasses\base\WizardDark.cs" />
+    <Compile Include="playerclasses\base\WizardLight.cs" />
     <Compile Include="playerclasses\hibernia\ClassMaulerHib.cs" />
     <Compile Include="playerclasses\midgard\ClassMaulerMid.cs" />
     <Compile Include="playertitles\titles\level\ChampionTitle.cs" />

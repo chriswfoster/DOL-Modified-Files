@@ -1,3 +1,70 @@
+using System;
+using System.Collections.Generic;
+
+namespace DOL.GS.PlayerClass
+{
+    /// <summary>
+    /// Albion Base Fighter Class
+    /// </summary>
+    [CharacterClassAttribute((int)eCharacterClass.Guardian, "Guardian", "Guardian")]
+    public class ClassGuardian : CharacterClassBase
+    {
+       // private static readonly string[] AutotrainableSkills = new[] { Specs.Axe, Specs.Sword, Specs.Polearms, Specs.Hammer };
+        public ClassGuardian()
+            : base()
+        {
+            m_profession = "PlayerClass.Profession.HouseofThor";
+            m_specializationMultiplier = 40;
+            m_primaryStat = eStat.INT;
+            m_secondaryStat = eStat.DEX;
+            m_tertiaryStat = eStat.CON;
+            m_manaStat = eStat.INT;
+            m_wsbase = 440;
+            m_baseHP = 880;
+        }
+
+
+        public override bool CanUseLefthandedWeapon
+        {
+            get { return true; }
+        }
+
+
+        public override string GetTitle(GamePlayer player, int level)
+        {
+            return HasAdvancedFromBaseClass() ? base.GetTitle(player, level) : base.GetTitle(player, 0);
+        }
+
+
+        // public override eClassType ClassType
+        // {
+        //     get { return eClassType.ListCaster; }
+        // }
+
+        public override eClassType ClassType
+        {
+            get { return eClassType.PureTank; }
+        }
+
+       // public override IList<string> GetAutotrainableSkills()
+       // {
+       //     return AutotrainableSkills;
+        //}
+
+        public override GameTrainer.eChampionTrainerType ChampionTrainerType()
+        {
+            return GameTrainer.eChampionTrainerType.Fighter;
+        }
+
+        public override bool HasAdvancedFromBaseClass()
+        {
+            return true;
+        }
+
+    }
+}
+
+
 /*
  * DAWN OF LIGHT - The first free open source DAoC server emulator
  * 
@@ -76,68 +143,3 @@ namespace DOL.GS.PlayerClass
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  *
  */
-using System;
-using System.Collections.Generic;
-
-namespace DOL.GS.PlayerClass
-{
-    /// <summary>
-    /// Albion Base Fighter Class
-    /// </summary>
-    [CharacterClassAttribute((int)eCharacterClass.Guardian, "Guardian", "Guardian")]
-    public class Guardian : CharacterClassBase
-    {
-       // private static readonly string[] AutotrainableSkills = new[] { Specs.Axe, Specs.Sword, Specs.Polearms, Specs.Hammer };
-        public Guardian()
-            : base()
-        {
-            m_profession = "PlayerClass.Profession.HouseofThor";
-            m_specializationMultiplier = 40;
-            m_primaryStat = eStat.INT;
-            m_secondaryStat = eStat.DEX;
-            m_tertiaryStat = eStat.CON;
-            m_manaStat = eStat.INT;
-            m_wsbase = 440;
-            m_baseHP = 880;
-        }
-
-
-        public override bool CanUseLefthandedWeapon
-        {
-            get { return true; }
-        }
-
-
-        public override string GetTitle(GamePlayer player, int level)
-        {
-            return HasAdvancedFromBaseClass() ? base.GetTitle(player, level) : base.GetTitle(player, 0);
-        }
-
-
-        // public override eClassType ClassType
-        // {
-        //     get { return eClassType.ListCaster; }
-        // }
-
-        public override eClassType ClassType
-        {
-            get { return eClassType.PureTank; }
-        }
-
-       // public override IList<string> GetAutotrainableSkills()
-       // {
-       //     return AutotrainableSkills;
-        //}
-
-        public override GameTrainer.eChampionTrainerType ChampionTrainerType()
-        {
-            return GameTrainer.eChampionTrainerType.Fighter;
-        }
-
-        public override bool HasAdvancedFromBaseClass()
-        {
-            return true;
-        }
-
-    }
-}

@@ -87,7 +87,7 @@ namespace DOL.GS
             }
             if (text.ToLower() == "classes")
             {
-                player.Out.SendMessage(String.Format("Currently, I'm still working on the classes. There current available classes will be Summoner, Spellblade, Wizard, Stormlord, Guardians, Assassins, and Fighters."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format("Currently, I'm still working on the classes. The (soon to be) available classes will be Summoner, Spellblade, Wizard, Stormlord, Guardians, Assassins, and Fighters."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
                 player.Out.SendMessage(String.Format("There will be 3+ tiers to each class. They'll start out with a basic spell line, then it'll enhance as they quest or find real world objects that give them the specs they seek."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
                 player.Out.SendMessage(String.Format("Return to [beginning] of info console."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
             }

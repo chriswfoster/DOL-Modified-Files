@@ -27,12 +27,12 @@ namespace DOL.GS.PlayerClass
     [CharacterClassAttribute((int)eCharacterClass.Assassin, "Assassin", "Assassin")]
     public class Assassin : CharacterClassBase
     {
-        private static readonly string[] AutotrainableSkills = new[] { Specs.Axe, Specs.Sword, Specs.Polearms, Specs.Hammer };
+        //private static readonly string[] AutotrainableSkills = new[] { Specs.Axe, Specs.Sword, Specs.Polearms, Specs.Hammer };
         public Assassin()
             : base()
         {
             m_profession = "PlayerClass.Profession.HouseofThor";
-            m_specializationMultiplier = 100;
+            m_specializationMultiplier = 40;
             m_primaryStat = eStat.STR;
             m_secondaryStat = eStat.DEX;
             m_tertiaryStat = eStat.QUI;
@@ -64,10 +64,10 @@ namespace DOL.GS.PlayerClass
             get { return eClassType.PureTank; }
         }
 
-        public override IList<string> GetAutotrainableSkills()
-        {
-            return AutotrainableSkills;
-        }
+       // public override IList<string> GetAutotrainableSkills()
+      //  {
+      //      return AutotrainableSkills;
+       // }
 
         public override GameTrainer.eChampionTrainerType ChampionTrainerType()
         {

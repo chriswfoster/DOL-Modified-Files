@@ -80,14 +80,14 @@ namespace DOL.GS.PlayerClass
     /// Albion Base Fighter Class
     /// </summary>
     [CharacterClassAttribute((int)eCharacterClass.Warrior, "Warrior", "Warrior")]
-    public class Warrior : CharacterClassBase
+    public class ClassWarrior : CharacterClassBase
     {
-        private static readonly string[] AutotrainableSkills = new[] { Specs.Axe, Specs.Sword, Specs.Polearms, Specs.Hammer };
-        public Warrior()
+       // private static readonly string[] AutotrainableSkills = new[] { Specs.Axe, Specs.Sword, Specs.Polearms, Specs.Hammer };
+        public ClassWarrior()
             : base()
         {
             m_profession = "PlayerClass.Profession.HouseofThor";
-            m_specializationMultiplier = 100;
+            m_specializationMultiplier = 40;
             m_primaryStat = eStat.STR;
             m_secondaryStat = eStat.CON;
             m_tertiaryStat = eStat.DEX;
@@ -119,10 +119,10 @@ namespace DOL.GS.PlayerClass
             get { return eClassType.PureTank; }
         }
 
-        public override IList<string> GetAutotrainableSkills()
-        {
-            return AutotrainableSkills;
-        }
+       // public override IList<string> GetAutotrainableSkills()
+        //{
+        //    return AutotrainableSkills;
+       // }
 
         public override GameTrainer.eChampionTrainerType ChampionTrainerType()
         {
