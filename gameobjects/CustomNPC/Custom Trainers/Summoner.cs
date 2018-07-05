@@ -42,16 +42,16 @@ namespace DOL.GS
     /// You can whisper refresh to this teleporter to reload the teleport locations
     /// </summary>
     /// <author>Tolakram; from SI teleporter created by Aredhel</author>
-    public class WizardTrainer : GameNPC
+    public class SummonerTrainer : GameNPC
     {
 
 
-        protected int lightClassId = 65;
-        protected int darkClassId = 66;
-        protected string targetClassName = "Wizard";
-        protected string targetClassDescription = "Wizards are high-damage, single-target, long-range, casters. They have weak armor but make up for it in damage and range. A wizard may come with more utility (light), or more damage (dark).";
-        protected int darkClassRace = 17;
-        protected int lightClassRace = 11;
+        protected int lightClassId = 67;
+        protected int darkClassId = 68;
+        protected string targetClassName = "Summoner";
+        protected string targetClassDescription = "The Summoner class relies heavily on it's pets. Actually, it depends entirely on it's pets. Without any pets up, a summoner is basically useless. However, with their abundance of pets, they can prove to be the best team mate, or deadliest opponent - light or dark.";
+        protected int darkClassRace = 14;
+        protected int lightClassRace = 15;
 
 
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -135,7 +135,7 @@ namespace DOL.GS
             if (text.ToLower() == $"{targetClassName}".ToLower())
             {
                 player.Out.SendMessage(String.Format($"{targetClassDescription}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format($"You must be a Frostalf or Elf to be a true {targetClassName}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format($"You must be a Valkyn or Sylvan to be a true {targetClassName}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
                 player.Out.SendMessage(String.Format($"Would you like to [become a Light {targetClassName}] or maybe even a [Dark {targetClassName}] today?"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
 
             }
