@@ -42,17 +42,18 @@ namespace DOL.GS
     /// You can whisper refresh to this teleporter to reload the teleport locations
     /// </summary>
     /// <author>Tolakram; from SI teleporter created by Aredhel</author>
-    public class WarriorTrainer : GameNPC
+    public class StormlordTrainer : GameNPC
     {
 
 
-        protected int targetClassID = 22;                                  /// CHANGE THIS!!!
-        protected string targetClassName = "warrior";                     ///  CHANGE THIS
-        protected string targetClassDescription = "The Warrior class is a solid, melee dps class. It has good armor, but no ranged abilities.It can have defensive abilities, but no shields.Expect to utilize 2h weapons in your career.The Warrior can swing his weapon and sometimes hit multiple targets.";
-        protected int targetClassRace1 = 3;
-        protected int targetClassRace2 = 5;
+        protected int lightClassId = 70;
+        protected int darkClassId = 71;
+        protected string targetClassName = "Stormlord";
+        protected string targetClassDescription = "Stormlords are masters of high AoE damage. They can cast uninterruptible spells, that can melt an army of enemies. However, their spells tend to cast very slowly. There is a Light spec Stormlord and a Dark spec Stormlord. Completely different classes, completely different races.";
+        protected int darkClassRace = 7;
+        protected int lightClassRace = 13;
 
-        
+
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         //     private List<Classes> m_availableclasses = new List<Classes>();
 
@@ -78,7 +79,7 @@ namespace DOL.GS
 
         protected virtual bool CanTrain(GamePlayer player)
         {
-            return player.CharacterClass.ID == targetClassID;                                    
+            return player.CharacterClass.ID == lightClassId || player.CharacterClass.ID == darkClassId ? true : false;
         }
 
 
@@ -135,35 +136,46 @@ namespace DOL.GS
             if (text.ToLower() == $"{targetClassName}")
             {
                 player.Out.SendMessage(String.Format($"{targetClassDescription}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format($"You must be a Norseman or Highlander to be a true {targetClassName}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format($"Would you like to [become a {targetClassName}] today?"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format($"You must be a Dwarf or Inconnu to be a true {targetClassName}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format($"Would you like to [become a Light {targetClassName}] or maybe even a [Dark {targetClassName}] today?"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
 
             }
-            if (text.ToLower() == $"become a { targetClassName}" && (player.Race == targetClassRace1 || player.Race == targetClassRace2))
-                {
-                player.Out.SendCustomDialog($"Are you sure you want to become a {targetClassName}?", new CustomDialogResponse(WarriorTrainerPrompt));
-            
+            if (text.ToLower() == $"become a Light { targetClassName}" && (player.Race == lightClassRace || player.Race == darkClassRace))
+            {
+                player.Out.SendCustomDialog($"Are you sure you want to become a {targetClassName}?", new CustomDialogResponse(LightTrainerPrompt));
+
             }
-            if (text.ToLower() == $"become a {targetClassName}" && (player.Race != targetClassRace1 || player.Race != targetClassRace2))
+            if (text.ToLower() == $"Dark {targetClassName}" && (player.Race == lightClassRace || player.Race == darkClassRace))
+            {
+                player.Out.SendCustomDialog($"Are you sure you want to become a {targetClassName}?", new CustomDialogResponse(DarkTrainerPrompt));
+
+            }
+            if (text.ToLower() == $"become a Light {targetClassName}" && (player.Race != darkClassRace || player.Race != lightClassRace))
             {
                 player.Out.SendMessage($"Hah, you can't be a {targetClassName}. You must select the correct race(s) for this class!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
                 player.Out.SendMessage(String.Format($"Hah, you can't be a {targetClassName}. You must select the correct race(s) for this class!"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
             }
-          
+            if (text.ToLower() == $"Dark {targetClassName}" && (player.Race != darkClassRace || player.Race != lightClassRace))
+            {
+                player.Out.SendMessage($"Hah, you can't be a {targetClassName}. You must select the correct race(s) for this class!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(String.Format($"Hah, you can't be a {targetClassName}. You must select the correct race(s) for this class!"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+            }
+
             return false;
-
-
         }
-        protected virtual void WarriorTrainerPrompt(GamePlayer player, byte response)
+
+
+
+        protected virtual void LightTrainerPrompt(GamePlayer player, byte response)
         {
             if (response != 0x01)
             {
 
                 return;
             }
-            if (player.Class != targetClassID)
+            if (player.Class != lightClassId || player.Class != darkClassId)
             {
-                SetClass(player, targetClassID);
+                SetClass(player, lightClassId);
                 player.Client.Account.Characters[player.Client.ActiveCharIndex].BindRegion = 1;
                 player.Client.Account.Characters[player.Client.ActiveCharIndex].BindXpos = 561654;
                 player.Client.Account.Characters[player.Client.ActiveCharIndex].BindYpos = 510725;
@@ -172,9 +184,34 @@ namespace DOL.GS
                 player.SaveIntoDatabase();
                 player.Out.SendMessage($"Great choice, {player.Class}! Off you go then!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
             }
-            if (player.Class == targetClassID)
+            if (player.Class == lightClassId)
             {
-                player.Out.SendMessage("You're already a " + player.Class +".", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage("You're already a " + player.Class + ".", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage(String.Format("You're already a " + player.Class + "."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+            }
+        }
+
+        protected virtual void DarkTrainerPrompt(GamePlayer player, byte response)
+        {
+            if (response != 0x01)
+            {
+
+                return;
+            }
+            if (player.Class != darkClassId || player.Class != darkClassId)
+            {
+                SetClass(player, darkClassId);
+                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindRegion = 1;
+                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindXpos = 561654;
+                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindYpos = 510725;
+                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindZpos = 2327;
+                player.Client.Account.Characters[player.Client.ActiveCharIndex].BindHeading = 1009;
+                player.SaveIntoDatabase();
+                player.Out.SendMessage($"Great choice, {player.Class}! Off you go then!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+            }
+            if (player.Class == darkClassId)
+            {
+                player.Out.SendMessage("You're already a " + player.Class + ".", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
                 player.Out.SendMessage(String.Format("You're already a " + player.Class + "."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
             }
         }

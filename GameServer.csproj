@@ -372,6 +372,9 @@
     <Compile Include="gameobjects\CharacterClasses\ICharacterClass.cs" />
     <Compile Include="gameobjects\CharacterClasses\CharacterClassBase.cs" />
     <Compile Include="gameobjects\CharacterClasses\Midgard\CharacterClassBoneDancer.cs" />
+    <Compile Include="gameobjects\CustomNPC\Custom Trainers\AssassinTrainer.cs" />
+    <Compile Include="gameobjects\CustomNPC\Custom Trainers\Guardian.cs" />
+    <Compile Include="gameobjects\CustomNPC\Custom Trainers\Stormlord.cs" />
     <Compile Include="gameobjects\CustomNPC\DPSDummy.cs" />
     <Compile Include="gameobjects\CustomNPC\Custom Trainers\WarriorTrainer.cs" />
     <Compile Include="gameobjects\D2AccountStash.cs" />

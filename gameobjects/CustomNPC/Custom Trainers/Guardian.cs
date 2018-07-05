@@ -46,8 +46,8 @@ namespace DOL.GS
     {
 
 
-        protected int targetClassID = 52;                                  /// CHANGE THIS!!!
-        protected string targetClassName = "guardian";                     ///  CHANGE THIS
+        protected int targetClassID = 52;                              
+        protected string targetClassName = "guardian";                 
         protected string targetClassDescription = "The Guardian class has 1 job, and it's to protects other players. The Guardian is very hard to kill. However it is very unlikely that the guardian should be able to kill anyone himself. The Guardian comes with shield spec (no stuns), resists, and more to keep the team alive.";
         protected int targetClassRace1 = 6;
         protected int targetClassRace2 = 16;
@@ -135,11 +135,11 @@ namespace DOL.GS
             if (text.ToLower() == $"{targetClassName}")
             {
                 player.Out.SendMessage(String.Format($"{targetClassDescription}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format($"You must be a Norseman or Highlander to be a true {targetClassName}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format($"You must be a Half-Ogre or Troll to be a true {targetClassName}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
                 player.Out.SendMessage(String.Format($"Would you like to [become a {targetClassName}] today?"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
 
             }
-            if (text.ToLower() == targetClassDescription && (player.Race == targetClassRace1 || player.Race == targetClassRace2))
+            if (text.ToLower() == $"become a {targetClassName}" && (player.Race == targetClassRace1 || player.Race == targetClassRace2))
             {
                 player.Out.SendCustomDialog($"Are you sure you want to become a {targetClassName}?", new CustomDialogResponse(WarriorTrainerPrompt));
 

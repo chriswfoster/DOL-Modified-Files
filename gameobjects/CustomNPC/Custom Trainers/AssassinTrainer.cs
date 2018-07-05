@@ -76,7 +76,7 @@ namespace DOL.GS
 
 
 
-        public virtual bool CanTrain(GamePlayer player)
+        protected virtual bool CanTrain(GamePlayer player)
         {
             return player.CharacterClass.ID == targetClassID;
         }
@@ -135,11 +135,11 @@ namespace DOL.GS
             if (text.ToLower() == $"{targetClassName}")
             {
                 player.Out.SendMessage(String.Format($"{targetClassDescription}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
-                player.Out.SendMessage(String.Format($"You must be a Norseman or Highlander to be a true {targetClassName}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
+                player.Out.SendMessage(String.Format($"You must be a Kobold or Lurikeen to be a true {targetClassName}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
                 player.Out.SendMessage(String.Format($"Would you like to [become a {targetClassName}] today?"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
 
             }
-            if (text.ToLower() == targetClassDescription && (player.Race == targetClassRace1 || player.Race == targetClassRace2))
+            if (text.ToLower() == $"become a {targetClassName}" && (player.Race == targetClassRace1 || player.Race == targetClassRace2))
             {
                 player.Out.SendCustomDialog($"Are you sure you want to become a {targetClassName}?", new CustomDialogResponse(WarriorTrainerPrompt));
 
