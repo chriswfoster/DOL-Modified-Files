@@ -170,7 +170,7 @@ namespace DOL.GS
                 player.Client.Account.Characters[player.Client.ActiveCharIndex].BindZpos = 2327;
                 player.Client.Account.Characters[player.Client.ActiveCharIndex].BindHeading = 1009;
                 player.SaveIntoDatabase();
-                player.Out.SendMessage($"Great choice, {player.Class}! Off you go then!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage($"Great choice, {targetClassName}! Off you go then!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
             }
             if (player.Class == targetClassID)
             {

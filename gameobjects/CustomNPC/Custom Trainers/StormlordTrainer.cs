@@ -77,7 +77,7 @@ namespace DOL.GS
 
 
 
-        protected virtual bool CanTrain(GamePlayer player)
+        public virtual bool CanTrain(GamePlayer player)
         {
             return player.CharacterClass.ID == lightClassId || player.CharacterClass.ID == darkClassId ? true : false;
         }
@@ -122,40 +122,39 @@ namespace DOL.GS
 
 
         /// <summary>
-        /// Use the NPC Guild Name to find all the valid destinations for this teleporter
+        /// Use the NPC Guild Name to find all the valid destinations for this teleporter/whi Storm
         /// </summary>
         public override bool WhisperReceive(GameLiving source, string text)
         {
-
 
             if (!base.WhisperReceive(source, text) || !(source is GamePlayer))
                 return false;
             GamePlayer player = source as GamePlayer;
 
 
-            if (text.ToLower() == $"{targetClassName}")
+            if (text.ToLower() == $"{targetClassName}".ToLower())
             {
                 player.Out.SendMessage(String.Format($"{targetClassDescription}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
                 player.Out.SendMessage(String.Format($"You must be a Dwarf or Inconnu to be a true {targetClassName}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
                 player.Out.SendMessage(String.Format($"Would you like to [become a Light {targetClassName}] or maybe even a [Dark {targetClassName}] today?"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
 
             }
-            if (text.ToLower() == $"become a Light { targetClassName}" && (player.Race == lightClassRace || player.Race == darkClassRace))
+            if (text.ToLower() == $"become a Light { targetClassName}".ToLower() && (player.Race == lightClassRace || player.Race == darkClassRace))
             {
                 player.Out.SendCustomDialog($"Are you sure you want to become a {targetClassName}?", new CustomDialogResponse(LightTrainerPrompt));
 
             }
-            if (text.ToLower() == $"Dark {targetClassName}" && (player.Race == lightClassRace || player.Race == darkClassRace))
+            if (text.ToLower() == $"Dark {targetClassName}".ToLower() && (player.Race == lightClassRace || player.Race == darkClassRace))
             {
                 player.Out.SendCustomDialog($"Are you sure you want to become a {targetClassName}?", new CustomDialogResponse(DarkTrainerPrompt));
 
             }
-            if (text.ToLower() == $"become a Light {targetClassName}" && (player.Race != darkClassRace || player.Race != lightClassRace))
+            if (text.ToLower() == $"become a Light {targetClassName}".ToLower() && player.Race != darkClassRace && player.Race != lightClassRace)
             {
                 player.Out.SendMessage($"Hah, you can't be a {targetClassName}. You must select the correct race(s) for this class!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
                 player.Out.SendMessage(String.Format($"Hah, you can't be a {targetClassName}. You must select the correct race(s) for this class!"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
             }
-            if (text.ToLower() == $"Dark {targetClassName}" && (player.Race != darkClassRace || player.Race != lightClassRace))
+            if (text.ToLower() == $"Dark {targetClassName}".ToLower() && (player.Race != darkClassRace || player.Race != lightClassRace))
             {
                 player.Out.SendMessage($"Hah, you can't be a {targetClassName}. You must select the correct race(s) for this class!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
                 player.Out.SendMessage(String.Format($"Hah, you can't be a {targetClassName}. You must select the correct race(s) for this class!"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
@@ -182,7 +181,7 @@ namespace DOL.GS
                 player.Client.Account.Characters[player.Client.ActiveCharIndex].BindZpos = 2327;
                 player.Client.Account.Characters[player.Client.ActiveCharIndex].BindHeading = 1009;
                 player.SaveIntoDatabase();
-                player.Out.SendMessage($"Great choice, {player.Class}! Off you go then!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage($"Great choice, {targetClassName}! Off you go then!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
             }
             if (player.Class == lightClassId)
             {
@@ -207,7 +206,7 @@ namespace DOL.GS
                 player.Client.Account.Characters[player.Client.ActiveCharIndex].BindZpos = 2327;
                 player.Client.Account.Characters[player.Client.ActiveCharIndex].BindHeading = 1009;
                 player.SaveIntoDatabase();
-                player.Out.SendMessage($"Great choice, {player.Class}! Off you go then!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage($"Great choice, {targetClassName}! Off you go then!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
             }
             if (player.Class == darkClassId)
             {

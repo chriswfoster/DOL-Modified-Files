@@ -132,19 +132,19 @@ namespace DOL.GS
             GamePlayer player = source as GamePlayer;
 
 
-            if (text.ToLower() == $"{targetClassName}")
+            if (text.ToLower() == $"{targetClassName}".ToLower())
             {
                 player.Out.SendMessage(String.Format($"{targetClassDescription}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
                 player.Out.SendMessage(String.Format($"You must be a Half-Ogre or Troll to be a true {targetClassName}"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
                 player.Out.SendMessage(String.Format($"Would you like to [become a {targetClassName}] today?"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
 
             }
-            if (text.ToLower() == $"become a {targetClassName}" && (player.Race == targetClassRace1 || player.Race == targetClassRace2))
+            if (text.ToLower() == $"become a {targetClassName}".ToLower() && (player.Race == targetClassRace1 || player.Race == targetClassRace2))
             {
                 player.Out.SendCustomDialog($"Are you sure you want to become a {targetClassName}?", new CustomDialogResponse(WarriorTrainerPrompt));
 
             }
-            if (text.ToLower() == $"become a {targetClassName}" && (player.Race != targetClassRace1 || player.Race != targetClassRace2))
+            if (text.ToLower() == $"become a {targetClassName}".ToLower() && (player.Race != targetClassRace1 || player.Race != targetClassRace2))
             {
                 player.Out.SendMessage($"Hah, you can't be a {targetClassName}. You must select the correct race(s) for this class!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
                 player.Out.SendMessage(String.Format($"Hah, you can't be a {targetClassName}. You must select the correct race(s) for this class!"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
@@ -170,7 +170,7 @@ namespace DOL.GS
                 player.Client.Account.Characters[player.Client.ActiveCharIndex].BindZpos = 2327;
                 player.Client.Account.Characters[player.Client.ActiveCharIndex].BindHeading = 1009;
                 player.SaveIntoDatabase();
-                player.Out.SendMessage($"Great choice, {player.Class}! Off you go then!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage($"Great choice, {targetClassName}! Off you go then!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
             }
             if (player.Class == targetClassID)
             {
