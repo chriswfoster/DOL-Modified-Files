@@ -42,17 +42,17 @@ namespace DOL.GS
     /// You can whisper refresh to this teleporter to reload the teleport locations
     /// </summary>
     /// <author>Tolakram; from SI teleporter created by Aredhel</author>
-    public class WarriorTrainer : GameNPC
+    public class GuardianTrainer : GameNPC
     {
 
 
-        protected int targetClassID = 22;                                  /// CHANGE THIS!!!
-        protected string targetClassName = "warrior";                     ///  CHANGE THIS
-        protected string targetClassDescription = "The Warrior class is a solid, melee dps class. It has good armor, but no ranged abilities.It can have defensive abilities, but no shields.Expect to utilize 2h weapons in your career.The Warrior can swing his weapon and sometimes hit multiple targets.";
-        protected int targetClassRace1 = 3;
-        protected int targetClassRace2 = 5;
+        protected int targetClassID = 52;                                  /// CHANGE THIS!!!
+        protected string targetClassName = "guardian";                     ///  CHANGE THIS
+        protected string targetClassDescription = "The Guardian class has 1 job, and it's to protects other players. The Guardian is very hard to kill. However it is very unlikely that the guardian should be able to kill anyone himself. The Guardian comes with shield spec (no stuns), resists, and more to keep the team alive.";
+        protected int targetClassRace1 = 6;
+        protected int targetClassRace2 = 16;
 
-        
+
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         //     private List<Classes> m_availableclasses = new List<Classes>();
 
@@ -78,7 +78,7 @@ namespace DOL.GS
 
         public virtual bool CanTrain(GamePlayer player)
         {
-            return player.CharacterClass.ID == targetClassID;                                    
+            return player.CharacterClass.ID == targetClassID;
         }
 
 
@@ -140,16 +140,16 @@ namespace DOL.GS
 
             }
             if (text.ToLower() == targetClassDescription && (player.Race == targetClassRace1 || player.Race == targetClassRace2))
-                {
+            {
                 player.Out.SendCustomDialog($"Are you sure you want to become a {targetClassName}?", new CustomDialogResponse(WarriorTrainerPrompt));
-            
+
             }
             if (text.ToLower() == $"become a {targetClassName}" && (player.Race != targetClassRace1 || player.Race != targetClassRace2))
             {
                 player.Out.SendMessage($"Hah, you can't be a {targetClassName}. You must select the correct race(s) for this class!", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
                 player.Out.SendMessage(String.Format($"Hah, you can't be a {targetClassName}. You must select the correct race(s) for this class!"), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
             }
-          
+
             return false;
 
 
@@ -174,7 +174,7 @@ namespace DOL.GS
             }
             if (player.Class == targetClassID)
             {
-                player.Out.SendMessage("You're already a " + player.Class +".", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
+                player.Out.SendMessage("You're already a " + player.Class + ".", DOL.GS.PacketHandler.eChatType.CT_Staff, DOL.GS.PacketHandler.eChatLoc.CL_SystemWindow);
                 player.Out.SendMessage(String.Format("You're already a " + player.Class + "."), eChatType.CT_Say, eChatLoc.CL_PopupWindow);
             }
         }
